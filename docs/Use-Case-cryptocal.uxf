@@ -9,7 +9,7 @@
       <w>200</w>
       <h>200</h>
     </coordinates>
-    <panel_attributes>QPlanner</panel_attributes>
+    <panel_attributes>cryptocal</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -31,7 +31,7 @@
       <w>170</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>Event anlegen</panel_attributes>
+    <panel_attributes>Event CRUD</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
