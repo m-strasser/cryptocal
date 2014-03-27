@@ -12,9 +12,11 @@ TARGET = cc-lib
 TEMPLATE = lib
 CONFIG += staticlib
 
-SOURCES += cclib.cpp
+SOURCES += cclib.cpp \
+    event.cpp
 
-HEADERS += cclib.h
+HEADERS += cclib.h \
+    event.h
 unix {
     target.path = /usr/lib
     INSTALLS += target
