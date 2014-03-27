@@ -16,13 +16,13 @@ public:
     QString location;
     QDateTime start;
     QDateTime end;
-    QBool repeats;
+    bool repeats;
 
     // Functions
     int getId() const;
 
     // Functions for reoccuring events
-    QList<Event> GetRepeatedEvents();
+    QList<Event*> GetRepeatedEvents();
     void AddRepeatedEvent(Event &e);
     void RemoveRepeatedEvent(Event &e);
     void RemoveAllRepeatedEvents();
@@ -40,7 +40,7 @@ public:
 
     private:
         long id;
-        QList<Event> repeatedIterations;
+        QList<Event*> repeatedIterations;
 };
 
 #endif // EVENT_H

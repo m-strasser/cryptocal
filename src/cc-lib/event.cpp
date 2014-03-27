@@ -2,7 +2,7 @@
 
 Event::Event()
 {
-    repeatedIterations.append(*this);
+    repeatedIterations.append(this);
 }
 
 /**
@@ -19,7 +19,7 @@ int Event::getId() const
  * Returns a list containing Events, which are reoccuring instances
  * of one Event. (i.e. if an Event repeats weekly)
  */
-QList<Event> Event::GetRepeatedEvents()
+QList<Event*> Event::GetRepeatedEvents()
 {
     return repeatedIterations;
 }
@@ -31,7 +31,7 @@ QList<Event> Event::GetRepeatedEvents()
  */
 void Event::AddRepeatedEvent(Event &e)
 {
-    repeatedIterations.append(e);
+    repeatedIterations.append(&e);
 }
 
 /**
@@ -41,7 +41,7 @@ void Event::AddRepeatedEvent(Event &e)
  */
 void Event::RemoveRepeatedEvent(Event &e)
 {
-    repeatedIterations.removeAll(e);
+    repeatedIterations.removeAll(&e);
 }
 
 void Event::RemoveAllRepeatedEvents()
