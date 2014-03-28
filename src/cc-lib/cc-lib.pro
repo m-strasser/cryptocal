@@ -18,7 +18,8 @@ SOURCES += cclib.cpp \
 
 HEADERS += cclib.h \
     event.h \
-    calendar.h
+    calendar.h \
+    istoragemanager.h
 unix {
     target.path = /usr/lib
     INSTALLS += target

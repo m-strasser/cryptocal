@@ -45,12 +45,14 @@ OBJECTS_DIR   = ./
 SOURCES       = ../../../src/cc-lib/cclib.cpp \
 		../../../src/cc-lib/event.cpp \
 		../../../src/cc-lib/calendar.cpp moc_event.cpp \
-		moc_calendar.cpp
+		moc_calendar.cpp \
+		moc_istoragemanager.cpp
 OBJECTS       = cclib.o \
 		event.o \
 		calendar.o \
 		moc_event.o \
-		moc_calendar.o
+		moc_calendar.o \
+		moc_istoragemanager.o
 DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/common/shell-unix.conf \
 		/usr/lib/qt/mkspecs/common/unix.conf \
@@ -420,7 +422,7 @@ qmake_all: FORCE
 
 dist: 
 	@test -d .tmp/cc-lib1.0.0 || mkdir -p .tmp/cc-lib1.0.0
-	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/cc-lib1.0.0/ && $(COPY_FILE) --parents ../../../src/cc-lib/cclib.h ../../../src/cc-lib/event.h ../../../src/cc-lib/calendar.h .tmp/cc-lib1.0.0/ && $(COPY_FILE) --parents ../../../src/cc-lib/cclib.cpp ../../../src/cc-lib/event.cpp ../../../src/cc-lib/calendar.cpp .tmp/cc-lib1.0.0/ && (cd `dirname .tmp/cc-lib1.0.0` && $(TAR) cc-lib1.0.0.tar cc-lib1.0.0 && $(COMPRESS) cc-lib1.0.0.tar) && $(MOVE) `dirname .tmp/cc-lib1.0.0`/cc-lib1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/cc-lib1.0.0
+	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/cc-lib1.0.0/ && $(COPY_FILE) --parents ../../../src/cc-lib/cclib.h ../../../src/cc-lib/event.h ../../../src/cc-lib/calendar.h ../../../src/cc-lib/istoragemanager.h .tmp/cc-lib1.0.0/ && $(COPY_FILE) --parents ../../../src/cc-lib/cclib.cpp ../../../src/cc-lib/event.cpp ../../../src/cc-lib/calendar.cpp .tmp/cc-lib1.0.0/ && (cd `dirname .tmp/cc-lib1.0.0` && $(TAR) cc-lib1.0.0.tar cc-lib1.0.0 && $(COMPRESS) cc-lib1.0.0.tar) && $(MOVE) `dirname .tmp/cc-lib1.0.0`/cc-lib1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/cc-lib1.0.0
 
 
 clean:compiler_clean 
@@ -443,9 +445,9 @@ check: first
 
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_event.cpp moc_calendar.cpp
+compiler_moc_header_make_all: moc_event.cpp moc_calendar.cpp moc_istoragemanager.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_event.cpp moc_calendar.cpp
+	-$(DEL_FILE) moc_event.cpp moc_calendar.cpp moc_istoragemanager.cpp
 moc_event.cpp: /usr/include/qt/QtCore/QObject \
 		/usr/include/qt/QtCore/qobject.h \
 		/usr/include/qt/QtCore/qobjectdefs.h \
@@ -602,6 +604,66 @@ moc_calendar.cpp: /usr/include/qt/QtCore/QObject \
 		/usr/include/qt/QtCore/QList \
 		../../../src/cc-lib/calendar.h
 	/usr/lib/qt/bin/moc $(DEFINES) $(INCPATH) -I/usr/lib/gcc/include/c++/4.8.2 -I/usr/lib/gcc/include/c++/4.8.2/x86_64-unknown-linux-gnu -I/usr/lib/gcc/include/c++/4.8.2/backward -I/usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.2/include -I/usr/local/include -I/usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.2/include-fixed -I/usr/include ../../../src/cc-lib/calendar.h -o moc_calendar.cpp
+
+moc_istoragemanager.cpp: /usr/include/qt/QtCore/QObject \
+		/usr/include/qt/QtCore/qobject.h \
+		/usr/include/qt/QtCore/qobjectdefs.h \
+		/usr/include/qt/QtCore/qnamespace.h \
+		/usr/include/qt/QtCore/qglobal.h \
+		/usr/include/qt/QtCore/qconfig.h \
+		/usr/include/qt/QtCore/qfeatures.h \
+		/usr/include/qt/QtCore/qsystemdetection.h \
+		/usr/include/qt/QtCore/qprocessordetection.h \
+		/usr/include/qt/QtCore/qcompilerdetection.h \
+		/usr/include/qt/QtCore/qglobalstatic.h \
+		/usr/include/qt/QtCore/qatomic.h \
+		/usr/include/qt/QtCore/qbasicatomic.h \
+		/usr/include/qt/QtCore/qatomic_bootstrap.h \
+		/usr/include/qt/QtCore/qgenericatomic.h \
+		/usr/include/qt/QtCore/qatomic_msvc.h \
+		/usr/include/qt/QtCore/qatomic_integrity.h \
+		/usr/include/qt/QtCore/qoldbasicatomic.h \
+		/usr/include/qt/QtCore/qatomic_vxworks.h \
+		/usr/include/qt/QtCore/qatomic_power.h \
+		/usr/include/qt/QtCore/qatomic_alpha.h \
+		/usr/include/qt/QtCore/qatomic_armv7.h \
+		/usr/include/qt/QtCore/qatomic_armv6.h \
+		/usr/include/qt/QtCore/qatomic_armv5.h \
+		/usr/include/qt/QtCore/qatomic_bfin.h \
+		/usr/include/qt/QtCore/qatomic_ia64.h \
+		/usr/include/qt/QtCore/qatomic_mips.h \
+		/usr/include/qt/QtCore/qatomic_s390.h \
+		/usr/include/qt/QtCore/qatomic_sh4a.h \
+		/usr/include/qt/QtCore/qatomic_sparc.h \
+		/usr/include/qt/QtCore/qatomic_x86.h \
+		/usr/include/qt/QtCore/qatomic_cxx11.h \
+		/usr/include/qt/QtCore/qatomic_gcc.h \
+		/usr/include/qt/QtCore/qatomic_unix.h \
+		/usr/include/qt/QtCore/qmutex.h \
+		/usr/include/qt/QtCore/qlogging.h \
+		/usr/include/qt/QtCore/qflags.h \
+		/usr/include/qt/QtCore/qtypeinfo.h \
+		/usr/include/qt/QtCore/qtypetraits.h \
+		/usr/include/qt/QtCore/qsysinfo.h \
+		/usr/include/qt/QtCore/qobjectdefs_impl.h \
+		/usr/include/qt/QtCore/qstring.h \
+		/usr/include/qt/QtCore/qchar.h \
+		/usr/include/qt/QtCore/qbytearray.h \
+		/usr/include/qt/QtCore/qrefcount.h \
+		/usr/include/qt/QtCore/qarraydata.h \
+		/usr/include/qt/QtCore/qstringbuilder.h \
+		/usr/include/qt/QtCore/qlist.h \
+		/usr/include/qt/QtCore/qalgorithms.h \
+		/usr/include/qt/QtCore/qiterator.h \
+		/usr/include/qt/QtCore/qcoreevent.h \
+		/usr/include/qt/QtCore/qscopedpointer.h \
+		/usr/include/qt/QtCore/qmetatype.h \
+		/usr/include/qt/QtCore/qvarlengtharray.h \
+		/usr/include/qt/QtCore/qcontainerfwd.h \
+		/usr/include/qt/QtCore/qisenum.h \
+		/usr/include/qt/QtCore/qobject_impl.h \
+		../../../src/cc-lib/istoragemanager.h
+	/usr/lib/qt/bin/moc $(DEFINES) $(INCPATH) -I/usr/lib/gcc/include/c++/4.8.2 -I/usr/lib/gcc/include/c++/4.8.2/x86_64-unknown-linux-gnu -I/usr/lib/gcc/include/c++/4.8.2/backward -I/usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.2/include -I/usr/local/include -I/usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.2/include-fixed -I/usr/include ../../../src/cc-lib/istoragemanager.h -o moc_istoragemanager.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -782,6 +844,9 @@ moc_event.o: moc_event.cpp
 
 moc_calendar.o: moc_calendar.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_calendar.o moc_calendar.cpp
+
+moc_istoragemanager.o: moc_istoragemanager.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_istoragemanager.o moc_istoragemanager.cpp
 
 ####### Install
 
