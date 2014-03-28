@@ -3,25 +3,21 @@
 Calendar::Calendar(QObject *parent) :
     QObject(parent)
 {
-    id = id.createUuid();
+    m_id = m_id.createUuid();
 }
 
-/**
- * @brief Celander::getId
- * Returns the distinct ID of the Calendar.
- */
-QUuid Calendar::getId() const
+QUuid Calendar::id() const
 {
-    return id;
+    return m_id;
 }
 
 /**
  * @brief Calendar::getEvents
  * Returns the Events of the Calendar.
  */
-QList<Event*> Calendar::getEvents() const
+QList<Event*> Calendar::events() const
 {
-    return events;
+    return m_events;
 }
 
 /**
@@ -30,7 +26,7 @@ QList<Event*> Calendar::getEvents() const
  */
 void Calendar::AddEvent(Event &e)
 {
-    events.append(&e);
+    m_events.append(&e);
 }
 
 /**
@@ -40,7 +36,7 @@ void Calendar::AddEvent(Event &e)
  */
 void Calendar::RemoveEvent(Event &e)
 {
-    events.removeAll(&e);
+    m_events.removeAll(&e);
 }
 
 /**
@@ -49,5 +45,18 @@ void Calendar::RemoveEvent(Event &e)
  */
 void Calendar::RemoveAllEvents()
 {
-    events.clear();
+    m_events.clear();
+}
+
+QDataStream &operator<<(QDataStream &out, const Calendar &c)
+{
+    out << c.property("name");
+    return out;
+}
+
+QDataStream &operator>>(QDataStream &in, Calendar &c)
+{
+    //c = new Calendar();
+    //in >> c.setProperty("name");
+    return in;
 }

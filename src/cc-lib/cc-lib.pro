@@ -4,9 +4,9 @@
 #
 #-------------------------------------------------
 
-QT       += declarative testlib
+QT       += declarative testlib gui
 
-QT       -= gui
+#QT       -= gui
 
 TARGET = cc-lib
 TEMPLATE = lib
@@ -14,11 +14,13 @@ CONFIG += staticlib
 
 SOURCES += cclib.cpp \
     event.cpp \
-    calendar.cpp
+    calendar.cpp \
+    testcalendar.cpp
 
 HEADERS += cclib.h \
     event.h \
-    calendar.h
+    calendar.h \
+    testcalendar.h
 unix {
     target.path = /usr/lib
     INSTALLS += target
