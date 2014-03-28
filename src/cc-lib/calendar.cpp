@@ -50,13 +50,14 @@ void Calendar::RemoveAllEvents()
 
 QDataStream &operator<<(QDataStream &out, const Calendar &c)
 {
-    out << c.property("name");
+    out << c.property("name").toString();
     return out;
 }
 
 QDataStream &operator>>(QDataStream &in, Calendar &c)
 {
-    //c = new Calendar();
-    //in >> c.setProperty("name");
+    QString name;
+    in >> name;
+    c.setProperty("name", name);
     return in;
 }
