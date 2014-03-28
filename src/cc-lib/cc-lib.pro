@@ -13,10 +13,12 @@ TEMPLATE = lib
 CONFIG += staticlib
 
 SOURCES += cclib.cpp \
-    event.cpp
+    event.cpp \
+    calendar.cpp
 
 HEADERS += cclib.h \
-    event.h
+    event.h \
+    calendar.h
 unix {
     target.path = /usr/lib
     INSTALLS += target
