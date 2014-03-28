@@ -14,13 +14,11 @@ CONFIG += staticlib
 
 SOURCES += cclib.cpp \
     event.cpp \
-    calendar.cpp \
-    testcalendar.cpp
+    calendar.cpp
 
 HEADERS += cclib.h \
     event.h \
-    calendar.h \
-    testcalendar.h
+    calendar.h
 unix {
     target.path = /usr/lib
     INSTALLS += target

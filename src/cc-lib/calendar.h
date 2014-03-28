@@ -27,6 +27,9 @@ public:
     void RemoveEvent(Event &e);
     void RemoveAllEvents();
 
+    friend QDataStream &operator<<(QDataStream &out, const Calendar &c);
+    friend QDataStream &operator>>(QDataStream &in, Calendar &c);
+
     /**
      * @brief operator == Compares the ID of two Calendars.
      * @param c2 Second Calendar.
@@ -48,7 +51,6 @@ private:
 
 };
 
-QDataStream &operator<<(QDataStream &out, const Calendar &c);
-QDataStream &operator>>(QDataStream &in, Calendar &c) ;
+
 
 #endif // CALENDAR_H

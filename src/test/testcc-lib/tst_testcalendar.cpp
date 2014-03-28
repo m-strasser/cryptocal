@@ -24,7 +24,7 @@ TestCalendar::TestCalendar()
 void TestCalendar::initTestCase()
 {
     c.setProperty("name", "Test Calendar");
-    c.setProperty("description", "This is e test entry");
+    c.setProperty("description", "This is a test entry");
 }
 
 void TestCalendar::cleanupTestCase()
@@ -48,8 +48,10 @@ void TestCalendar::testSerialization()
     QDataStream in(&outfile);
     Calendar c2;
     in >> c2;
-    QString want = c.property("name").toString();
-    QCOMPARE(c2.property("name").toString(), want);
+    qDebug() << c2.property("id");
+    QVERIFY2(c == c2, "Either Operator == fails or object ids are not the same");
+    QCOMPARE(c2.property("id"), c.property("id"));
+    QCOMPARE(c2.property("name").toString(), c.property("name").toString());
 }
 
 QTEST_APPLESS_MAIN(TestCalendar)

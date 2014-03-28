@@ -48,16 +48,34 @@ void Calendar::RemoveAllEvents()
     m_events.clear();
 }
 
+/**
+ * @brief operator << writes a Calendar to a QDataStream
+ * @param out Stream to write to
+ * @param c Calendar to write.
+ * @return Returns the QDataStream
+ */
 QDataStream &operator<<(QDataStream &out, const Calendar &c)
 {
-    out << c.property("name").toString();
+    out << c.m_id;
+    out << c.m_name;
+    out << c.m_description;
+    out << c.m_color;
+    out << c.m_synchronised;
     return out;
 }
 
+/**
+ * @brief operator >> reads a Calendar from a QDataStream
+ * @param out Stream to read from
+ * @param c Calendar to read into.
+ * @return Returns the QDataStream
+ */
 QDataStream &operator>>(QDataStream &in, Calendar &c)
 {
-    QString name;
-    in >> name;
-    c.setProperty("name", name);
+    in >> c.m_id;
+    in >> c.m_name;
+    in >> c.m_description;
+    in >> c.m_color;
+    in >> c.m_synchronised;
     return in;
 }
