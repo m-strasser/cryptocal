@@ -2,21 +2,32 @@
 #define EVENT_H
 
 #include <QObject>
+#include <QUuid>
 #include <QDateTime>
 #include <QList>
+#include <QVariant>
 
 class Event: public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(QUuid id READ id)
+    Q_PROPERTY(QString name MEMBER m_name)
+    Q_PROPERTY(QString description MEMBER m_description)
+    Q_PROPERTY(QDateTime start MEMBER m_start)
+    Q_PROPERTY(QDateTime end MEMBER m_end)
+    Q_PROPERTY(bool synchronised MEMBER m_repeats)
+    Q_PROPERTY(QList<Event*> repeatedEvents READ GetReapeatedEvents)
+
 public:
-    Event();
+    explicit Event(QObject *parent = 0);
+
+    QUuid id() const;
 
     QString name;
     QString description;
     QString location;
     QDateTime start;
     QDateTime end;
-    bool repeats;
 
     // Functions
     int getId() const;
@@ -27,6 +38,8 @@ public:
     void RemoveRepeatedEvent(Event &e);
     void RemoveAllRepeatedEvents();
 
+    friend QDataStream &operator<<(QDataStream &out, const Event &e);
+    friend QDataStream &operator>>(QDataStream &in, Event &e);
     /**
      * @brief operator == Compares the ID of two Events.
      * @param e2 Second Event.
@@ -34,12 +47,16 @@ public:
      */
     bool operator ==(const Event &e2)const
     {
-            return getId()==e2.getId();
+            return this->id()==e2.id();
     }
-    // TODO: Operator overloading for serialization
 
     private:
-        long id;
+        QUuid m_id;
+        QString m_name;
+        QString m_description;
+        QDateTime m_start;
+        QDateTime m_end;
+        bool m_repeats;
         QList<Event*> repeatedIterations;
 };
 
