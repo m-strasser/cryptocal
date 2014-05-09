@@ -16,7 +16,7 @@ class Event: public QObject
     Q_PROPERTY(QDateTime start MEMBER m_start)
     Q_PROPERTY(QDateTime end MEMBER m_end)
     Q_PROPERTY(bool synchronised MEMBER m_repeats)
-    Q_PROPERTY(QList<Event*> repeatedEvents READ GetReapeatedEvents)
+    Q_PROPERTY(QList<Event*> repeatedEvents READ GetRepeatedEvents)
 
 public:
     explicit Event(QObject *parent = 0);

@@ -5,6 +5,7 @@
 #include <QUuid>
 #include <QColor>
 #include <QVariant>
+#include <QList>
 #include "event.h"
 
 class Calendar : public QObject

@@ -61,6 +61,7 @@ QDataStream &operator<<(QDataStream &out, const Calendar &c)
     out << c.m_description;
     out << c.m_color;
     out << c.m_synchronised;
+    out << c.m_events;
     return out;
 }
 
@@ -77,5 +78,6 @@ QDataStream &operator>>(QDataStream &in, Calendar &c)
     in >> c.m_description;
     in >> c.m_color;
     in >> c.m_synchronised;
+
     return in;
 }

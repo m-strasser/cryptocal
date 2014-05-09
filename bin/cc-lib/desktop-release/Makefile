@@ -505,6 +505,8 @@ moc_event.cpp: /usr/include/qt/QtCore/QObject \
 		/usr/include/qt/QtCore/qcontainerfwd.h \
 		/usr/include/qt/QtCore/qisenum.h \
 		/usr/include/qt/QtCore/qobject_impl.h \
+		/usr/include/qt/QtCore/QUuid \
+		/usr/include/qt/QtCore/quuid.h \
 		/usr/include/qt/QtCore/QDateTime \
 		/usr/include/qt/QtCore/qdatetime.h \
 		/usr/include/qt/QtCore/qsharedpointer.h \
@@ -513,6 +515,21 @@ moc_event.cpp: /usr/include/qt/QtCore/QObject \
 		/usr/include/qt/QtCore/qhash.h \
 		/usr/include/qt/QtCore/qpair.h \
 		/usr/include/qt/QtCore/QList \
+		/usr/include/qt/QtCore/QVariant \
+		/usr/include/qt/QtCore/qvariant.h \
+		/usr/include/qt/QtCore/qmap.h \
+		/usr/include/qt/QtCore/qdebug.h \
+		/usr/include/qt/QtCore/qtextstream.h \
+		/usr/include/qt/QtCore/qiodevice.h \
+		/usr/include/qt/QtCore/qlocale.h \
+		/usr/include/qt/QtCore/qvector.h \
+		/usr/include/qt/QtCore/qpoint.h \
+		/usr/include/qt/QtCore/qset.h \
+		/usr/include/qt/QtCore/qcontiguouscache.h \
+		/usr/include/qt/QtCore/qstringlist.h \
+		/usr/include/qt/QtCore/qdatastream.h \
+		/usr/include/qt/QtCore/qregexp.h \
+		/usr/include/qt/QtCore/qstringmatcher.h \
 		../../../src/cc-lib/event.h
 	/usr/lib/qt/bin/moc $(DEFINES) $(INCPATH) -I/usr/lib/gcc/include/c++/4.8.2 -I/usr/lib/gcc/include/c++/4.8.2/x86_64-unknown-linux-gnu -I/usr/lib/gcc/include/c++/4.8.2/backward -I/usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.2/include -I/usr/local/include -I/usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.2/include-fixed -I/usr/include ../../../src/cc-lib/event.h -o moc_event.cpp
 
@@ -596,12 +613,12 @@ moc_calendar.cpp: /usr/include/qt/QtCore/QObject \
 		/usr/include/qt/QtCore/qpoint.h \
 		/usr/include/qt/QtCore/qset.h \
 		/usr/include/qt/QtCore/qcontiguouscache.h \
+		/usr/include/qt/QtCore/QList \
 		../../../src/cc-lib/event.h \
 		/usr/include/qt/QtCore/QDateTime \
 		/usr/include/qt/QtCore/qdatetime.h \
 		/usr/include/qt/QtCore/qsharedpointer.h \
 		/usr/include/qt/QtCore/qsharedpointer_impl.h \
-		/usr/include/qt/QtCore/QList \
 		../../../src/cc-lib/calendar.h
 	/usr/lib/qt/bin/moc $(DEFINES) $(INCPATH) -I/usr/lib/gcc/include/c++/4.8.2 -I/usr/lib/gcc/include/c++/4.8.2/x86_64-unknown-linux-gnu -I/usr/lib/gcc/include/c++/4.8.2/backward -I/usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.2/include -I/usr/local/include -I/usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.2/include-fixed -I/usr/include ../../../src/cc-lib/calendar.h -o moc_calendar.cpp
 
@@ -662,6 +679,10 @@ moc_istoragemanager.cpp: /usr/include/qt/QtCore/QObject \
 		/usr/include/qt/QtCore/qcontainerfwd.h \
 		/usr/include/qt/QtCore/qisenum.h \
 		/usr/include/qt/QtCore/qobject_impl.h \
+		/usr/include/qt/QtCore/QFile \
+		/usr/include/qt/QtCore/qfile.h \
+		/usr/include/qt/QtCore/qfiledevice.h \
+		/usr/include/qt/QtCore/qiodevice.h \
 		../../../src/cc-lib/istoragemanager.h
 	/usr/lib/qt/bin/moc $(DEFINES) $(INCPATH) -I/usr/lib/gcc/include/c++/4.8.2 -I/usr/lib/gcc/include/c++/4.8.2/x86_64-unknown-linux-gnu -I/usr/lib/gcc/include/c++/4.8.2/backward -I/usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.2/include -I/usr/local/include -I/usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.2/include-fixed -I/usr/include ../../../src/cc-lib/istoragemanager.h -o moc_istoragemanager.cpp
 
@@ -740,6 +761,8 @@ event.o: ../../../src/cc-lib/event.cpp ../../../src/cc-lib/event.h \
 		/usr/include/qt/QtCore/qcontainerfwd.h \
 		/usr/include/qt/QtCore/qisenum.h \
 		/usr/include/qt/QtCore/qobject_impl.h \
+		/usr/include/qt/QtCore/QUuid \
+		/usr/include/qt/QtCore/quuid.h \
 		/usr/include/qt/QtCore/QDateTime \
 		/usr/include/qt/QtCore/qdatetime.h \
 		/usr/include/qt/QtCore/qsharedpointer.h \
@@ -747,7 +770,22 @@ event.o: ../../../src/cc-lib/event.cpp ../../../src/cc-lib/event.h \
 		/usr/include/qt/QtCore/qsharedpointer_impl.h \
 		/usr/include/qt/QtCore/qhash.h \
 		/usr/include/qt/QtCore/qpair.h \
-		/usr/include/qt/QtCore/QList
+		/usr/include/qt/QtCore/QList \
+		/usr/include/qt/QtCore/QVariant \
+		/usr/include/qt/QtCore/qvariant.h \
+		/usr/include/qt/QtCore/qmap.h \
+		/usr/include/qt/QtCore/qdebug.h \
+		/usr/include/qt/QtCore/qtextstream.h \
+		/usr/include/qt/QtCore/qiodevice.h \
+		/usr/include/qt/QtCore/qlocale.h \
+		/usr/include/qt/QtCore/qvector.h \
+		/usr/include/qt/QtCore/qpoint.h \
+		/usr/include/qt/QtCore/qset.h \
+		/usr/include/qt/QtCore/qcontiguouscache.h \
+		/usr/include/qt/QtCore/qstringlist.h \
+		/usr/include/qt/QtCore/qdatastream.h \
+		/usr/include/qt/QtCore/qregexp.h \
+		/usr/include/qt/QtCore/qstringmatcher.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o event.o ../../../src/cc-lib/event.cpp
 
 calendar.o: ../../../src/cc-lib/calendar.cpp ../../../src/cc-lib/calendar.h \
@@ -831,12 +869,12 @@ calendar.o: ../../../src/cc-lib/calendar.cpp ../../../src/cc-lib/calendar.h \
 		/usr/include/qt/QtCore/qpoint.h \
 		/usr/include/qt/QtCore/qset.h \
 		/usr/include/qt/QtCore/qcontiguouscache.h \
+		/usr/include/qt/QtCore/QList \
 		../../../src/cc-lib/event.h \
 		/usr/include/qt/QtCore/QDateTime \
 		/usr/include/qt/QtCore/qdatetime.h \
 		/usr/include/qt/QtCore/qsharedpointer.h \
-		/usr/include/qt/QtCore/qsharedpointer_impl.h \
-		/usr/include/qt/QtCore/QList
+		/usr/include/qt/QtCore/qsharedpointer_impl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o calendar.o ../../../src/cc-lib/calendar.cpp
 
 moc_event.o: moc_event.cpp 

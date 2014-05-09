@@ -1,7 +1,6 @@
 #include <QString>
 #include <QtTest>
 #include "calendar.h"
-#include "event.h"
 
 class TestCalendar : public QObject
 {
@@ -23,8 +22,12 @@ TestCalendar::TestCalendar()
 
 void TestCalendar::initTestCase()
 {
+    Event e;
     c.setProperty("name", "Test Calendar");
     c.setProperty("description", "This is a test entry");
+    //e.setProperty("name", "Test Event");
+    //e.setProperty("description", "This is also a test entry");
+    //c.AddEvent(e);
 }
 
 void TestCalendar::cleanupTestCase()
@@ -52,6 +55,7 @@ void TestCalendar::testSerialization()
     QVERIFY2(c == c2, "Either Operator == fails or object ids are not the same");
     QCOMPARE(c2.property("id"), c.property("id"));
     QCOMPARE(c2.property("name").toString(), c.property("name").toString());
+    QVERIFY2(c2.events().count() == c.events().count(), "Test event was not serialized or deserialized");
 }
 
 QTEST_APPLESS_MAIN(TestCalendar)
