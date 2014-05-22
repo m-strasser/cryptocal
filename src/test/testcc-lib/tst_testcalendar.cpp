@@ -1,6 +1,7 @@
 #include <QString>
 #include <QtTest>
 #include "calendar.h"
+#include "event.h"
 
 class TestCalendar : public QObject
 {
@@ -9,6 +10,7 @@ class TestCalendar : public QObject
 public:
     TestCalendar();
     Calendar c;
+    Event e;
 
 private Q_SLOTS:
     void initTestCase();
@@ -22,12 +24,11 @@ TestCalendar::TestCalendar()
 
 void TestCalendar::initTestCase()
 {
-    Event e;
     c.setProperty("name", "Test Calendar");
     c.setProperty("description", "This is a test entry");
-    //e.setProperty("name", "Test Event");
-    //e.setProperty("description", "This is also a test entry");
-    //c.AddEvent(e);
+    e.setProperty("name", "Test Event");
+    e.setProperty("description", "This is also a test entry");
+    c.AddEvent(e);
 }
 
 void TestCalendar::cleanupTestCase()
@@ -56,6 +57,10 @@ void TestCalendar::testSerialization()
     QCOMPARE(c2.property("id"), c.property("id"));
     QCOMPARE(c2.property("name").toString(), c.property("name").toString());
     QVERIFY2(c2.events().count() == c.events().count(), "Test event was not serialized or deserialized");
+    QVERIFY2(c2.events().count() == 1, "Test event was not serialized or deserialized");
+    QList<Event*> list = c.events();
+    QList<Event*> list2 = c2.events();
+    QVERIFY2(list.first() == list2.first(), "Events are not the same %s");
 }
 
 QTEST_APPLESS_MAIN(TestCalendar)
