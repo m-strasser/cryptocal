@@ -14,12 +14,14 @@ CONFIG += staticlib
 
 SOURCES += cclib.cpp \
     event.cpp \
-    calendar.cpp
+    calendar.cpp \
+    account.cpp
 
 HEADERS += cclib.h \
     event.h \
     calendar.h \
-    istoragemanager.h
+    istoragemanager.h \
+    account.h
 unix {
     target.path = /usr/lib
     INSTALLS += target
