@@ -1,7 +1,7 @@
 #include "event.h"
 
 Event::Event(QObject *parent) :
-    QObject(parent)
+    ISerializable(parent)
 {
     m_id = m_id.createUuid();
     repeatedIterations.append(this);
@@ -57,17 +57,15 @@ void Event::RemoveAllRepeatedEvents()
  * @param e Event to write
  * @return The QDataStream
  */
-QDataStream &operator<<(QDataStream &out, const Event &e)
+void Event::serializeTo (QDataStream &out) const
 {
-    out << e.m_id;
-    out << e.name;
-    out << e.description;
-    out << e.location;
-    out << e.start;
-    out << e.end;
-    out << e.m_repeats;
-
-    return out;
+    out << this->m_id;
+    out << this->name;
+    out << this->description;
+    out << this->location;
+    out << this->start;
+    out << this->end;
+    out << this->m_repeats;
 }
 
 /**

@@ -1,7 +1,7 @@
 #include "calendar.h"
 
 Calendar::Calendar(QObject *parent) :
-    QObject(parent)
+    ISerializable(parent)
 {
     m_id = m_id.createUuid();
 }
@@ -54,15 +54,14 @@ void Calendar::RemoveAllEvents()
  * @param c Calendar to write.
  * @return Returns the QDataStream
  */
-QDataStream &operator<<(QDataStream &out, const Calendar &c)
+void Calendar::serializeTo (QDataStream &out) const
 {
-    out << c.m_id;
-    out << c.m_name;
-    out << c.m_description;
-    out << c.m_color;
-    out << c.m_synchronised;
-    out << c.m_events;
-    return out;
+    out << this->m_id;
+    out << this->m_name;
+    out << this->m_description;
+    out << this->m_color;
+    out << this->m_synchronised;
+    out << this->m_events;
 }
 
 /**

@@ -6,9 +6,11 @@
 #include <QColor>
 #include <QVariant>
 #include <QList>
+
+#include "iserializable.h"
 #include "event.h"
 
-class Calendar : public QObject
+class Calendar : public ISerializable
 {
     Q_OBJECT
     Q_PROPERTY(QUuid id READ id)
@@ -28,7 +30,8 @@ public:
     void RemoveEvent(Event &e);
     void RemoveAllEvents();
 
-    friend QDataStream &operator<<(QDataStream &out, const Calendar &c);
+    void serializeTo (QDataStream &out) const;
+
     friend QDataStream &operator>>(QDataStream &in, Calendar &c);
 
     /**

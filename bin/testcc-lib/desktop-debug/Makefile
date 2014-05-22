@@ -45,8 +45,8 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../../../src/test/testcc-lib/tst_testcalendar.cpp 
-OBJECTS       = tst_testcalendar.o
+SOURCES       = ../../../src/test/testcc-lib/tst_testaccount.cpp 
+OBJECTS       = tst_testaccount.o
 DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/common/shell-unix.conf \
 		/usr/lib/qt/mkspecs/common/unix.conf \
@@ -404,7 +404,7 @@ qmake_all: FORCE
 
 dist: 
 	@test -d .tmp/tst_testcalendar1.0.0 || mkdir -p .tmp/tst_testcalendar1.0.0
-	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/tst_testcalendar1.0.0/ && $(COPY_FILE) --parents ../../../src/test/testcc-lib/tst_testcalendar.cpp .tmp/tst_testcalendar1.0.0/ && (cd `dirname .tmp/tst_testcalendar1.0.0` && $(TAR) tst_testcalendar1.0.0.tar tst_testcalendar1.0.0 && $(COMPRESS) tst_testcalendar1.0.0.tar) && $(MOVE) `dirname .tmp/tst_testcalendar1.0.0`/tst_testcalendar1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/tst_testcalendar1.0.0
+	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/tst_testcalendar1.0.0/ && $(COPY_FILE) --parents ../../../src/test/testcc-lib/tst_testaccount.cpp .tmp/tst_testcalendar1.0.0/ && (cd `dirname .tmp/tst_testcalendar1.0.0` && $(TAR) tst_testcalendar1.0.0.tar tst_testcalendar1.0.0 && $(COMPRESS) tst_testcalendar1.0.0.tar) && $(MOVE) `dirname .tmp/tst_testcalendar1.0.0`/tst_testcalendar1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/tst_testcalendar1.0.0
 
 
 clean:compiler_clean 
@@ -429,10 +429,10 @@ compiler_rcc_make_all:
 compiler_rcc_clean:
 compiler_moc_header_make_all:
 compiler_moc_header_clean:
-compiler_moc_source_make_all: tst_testcalendar.moc
+compiler_moc_source_make_all: tst_testaccount.moc
 compiler_moc_source_clean:
-	-$(DEL_FILE) tst_testcalendar.moc
-tst_testcalendar.moc: /usr/include/qt/QtCore/QString \
+	-$(DEL_FILE) tst_testaccount.moc
+tst_testaccount.moc: /usr/include/qt/QtCore/QString \
 		/usr/include/qt/QtCore/qstring.h \
 		/usr/include/qt/QtCore/qchar.h \
 		/usr/include/qt/QtCore/qglobal.h \
@@ -687,10 +687,11 @@ tst_testcalendar.moc: /usr/include/qt/QtCore/QString \
 		/usr/include/qt/QtGui/QColor \
 		/usr/include/qt/QtCore/QVariant \
 		/usr/include/qt/QtCore/QList \
+		../../../src/cc-lib/iserializable.h \
 		../../../src/cc-lib/event.h \
 		/usr/include/qt/QtCore/QDateTime \
-		../../../src/test/testcc-lib/tst_testcalendar.cpp
-	/usr/lib/qt/bin/moc $(DEFINES) $(INCPATH) -I/usr/lib/gcc/include/c++/4.8.2 -I/usr/lib/gcc/include/c++/4.8.2/x86_64-unknown-linux-gnu -I/usr/lib/gcc/include/c++/4.8.2/backward -I/usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.2/include -I/usr/local/include -I/usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.2/include-fixed -I/usr/include ../../../src/test/testcc-lib/tst_testcalendar.cpp -o tst_testcalendar.moc
+		../../../src/test/testcc-lib/tst_testaccount.cpp
+	/usr/lib/qt/bin/moc $(DEFINES) $(INCPATH) -I/usr/lib/gcc/include/c++/4.8.2 -I/usr/lib/gcc/include/c++/4.8.2/x86_64-unknown-linux-gnu -I/usr/lib/gcc/include/c++/4.8.2/backward -I/usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.2/include -I/usr/local/include -I/usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.2/include-fixed -I/usr/include ../../../src/test/testcc-lib/tst_testaccount.cpp -o tst_testaccount.moc
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -702,7 +703,7 @@ compiler_clean: compiler_moc_source_clean
 
 ####### Compile
 
-tst_testcalendar.o: ../../../src/test/testcc-lib/tst_testcalendar.cpp /usr/include/qt/QtCore/QString \
+tst_testaccount.o: ../../../src/test/testcc-lib/tst_testaccount.cpp /usr/include/qt/QtCore/QString \
 		/usr/include/qt/QtCore/qstring.h \
 		/usr/include/qt/QtCore/qchar.h \
 		/usr/include/qt/QtCore/qglobal.h \
@@ -957,10 +958,11 @@ tst_testcalendar.o: ../../../src/test/testcc-lib/tst_testcalendar.cpp /usr/inclu
 		/usr/include/qt/QtGui/QColor \
 		/usr/include/qt/QtCore/QVariant \
 		/usr/include/qt/QtCore/QList \
+		../../../src/cc-lib/iserializable.h \
 		../../../src/cc-lib/event.h \
 		/usr/include/qt/QtCore/QDateTime \
-		tst_testcalendar.moc
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tst_testcalendar.o ../../../src/test/testcc-lib/tst_testcalendar.cpp
+		tst_testaccount.moc
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tst_testaccount.o ../../../src/test/testcc-lib/tst_testaccount.cpp
 
 ####### Install
 

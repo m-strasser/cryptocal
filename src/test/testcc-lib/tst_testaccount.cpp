@@ -3,12 +3,12 @@
 #include "calendar.h"
 #include "event.h"
 
-class TestCalendar : public QObject
+class TestAccount : public QObject
 {
     Q_OBJECT
 
 public:
-    TestCalendar();
+    TestAccount();
     Calendar c;
     Event e;
 
@@ -18,12 +18,15 @@ private Q_SLOTS:
     void testSerialization();
 };
 
-TestCalendar::TestCalendar()
+TestAccount::TestAccount()
 {
 }
 
-void TestCalendar::initTestCase()
+void TestAccount::initTestCase()
 {
+    QFile outfile("outfile");
+    outfile.remove();
+
     c.setProperty("name", "Test Calendar");
     c.setProperty("description", "This is a test entry");
     e.setProperty("name", "Test Event");
@@ -31,13 +34,11 @@ void TestCalendar::initTestCase()
     c.AddEvent(e);
 }
 
-void TestCalendar::cleanupTestCase()
+void TestAccount::cleanupTestCase()
 {
-    QFile outfile("outfile");
-    outfile.remove();
 }
 
-void TestCalendar::testSerialization()
+void TestAccount::testSerialization()
 {
     QFile outfile("outfile");
     if (!outfile.open(QIODevice::WriteOnly | QIODevice::Text))
@@ -63,6 +64,6 @@ void TestCalendar::testSerialization()
     QVERIFY2(list.first() == list2.first(), "Events are not the same %s");
 }
 
-QTEST_APPLESS_MAIN(TestCalendar)
+QTEST_APPLESS_MAIN(TestAccount)
 
-#include "tst_testcalendar.moc"
+#include "tst_testaccount.moc"

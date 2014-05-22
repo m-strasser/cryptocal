@@ -7,7 +7,9 @@
 #include <QList>
 #include <QVariant>
 
-class Event: public QObject
+#include "iserializable.h"
+
+class Event: public ISerializable
 {
     Q_OBJECT
     Q_PROPERTY(QUuid id READ id)
@@ -38,7 +40,8 @@ public:
     void RemoveRepeatedEvent(Event &e);
     void RemoveAllRepeatedEvents();
 
-    friend QDataStream &operator<<(QDataStream &out, const Event &e);
+    void serializeTo (QDataStream &out) const;
+
     friend QDataStream &operator>>(QDataStream &in, Event &e);
     /**
      * @brief operator == Compares the ID of two Events.

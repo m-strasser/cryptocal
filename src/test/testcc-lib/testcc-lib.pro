@@ -15,7 +15,8 @@ CONFIG   -= app_bundle
 TEMPLATE = app
 
 
-SOURCES += tst_testcalendar.cpp
+SOURCES += \
+    tst_testaccount.cpp
 DEFINES += SRCDIR=\\\"$$PWD/\\\"
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../bin/cc-lib/desktop-debug/release/ -lcc-lib
