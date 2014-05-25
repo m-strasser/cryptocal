@@ -24,7 +24,7 @@ QList<Event*> Calendar::events() const
  * @brief Calendar::AddEvent
  * Adds an Event to the Calendar.
  */
-void Calendar::AddEvent(Event &e)
+void Calendar::AddEvent(Event& e)
 {
     m_events.append(&e);
 }
@@ -34,7 +34,7 @@ void Calendar::AddEvent(Event &e)
  * Removes an Event from the Calendar.
  * @param e The occurence to be removed.
  */
-void Calendar::RemoveEvent(Event &e)
+void Calendar::RemoveEvent(Event& e)
 {
     m_events.removeAll(&e);
 }
@@ -49,10 +49,8 @@ void Calendar::RemoveAllEvents()
 }
 
 /**
- * @brief operator << writes a Calendar to a QDataStream
+ * @brief serializeTo writes a Calendar to a QDataStream
  * @param out Stream to write to
- * @param c Calendar to write.
- * @return Returns the QDataStream
  */
 void Calendar::serializeTo (QDataStream &out) const
 {
@@ -61,22 +59,32 @@ void Calendar::serializeTo (QDataStream &out) const
     out << this->m_description;
     out << this->m_color;
     out << this->m_synchronised;
-    out << this->m_events;
+    out << this->m_events.count();
+    foreach(Event* event, this->m_events)
+    {
+        out << *event;
+    }
 }
 
 /**
- * @brief operator >> reads a Calendar from a QDataStream
+ * @brief serializeFrom reads a Calendar from a QDataStream
  * @param out Stream to read from
- * @param c Calendar to read into.
- * @return Returns the QDataStream
  */
-QDataStream &operator>>(QDataStream &in, Calendar &c)
+void Calendar::serializeFrom(QDataStream &in)
 {
-    in >> c.m_id;
-    in >> c.m_name;
-    in >> c.m_description;
-    in >> c.m_color;
-    in >> c.m_synchronised;
-
-    return in;
+    int count;
+    in >> this->m_id;
+    in >> this->m_name;
+    in >> this->m_description;
+    in >> this->m_color;
+    in >> this->m_synchronised;
+    in >> count;
+    for(int i=0;i<count;++i)
+    {
+        Event e;
+        in >> e;
+        this->m_events.append(&e);
+    }
 }
+
+

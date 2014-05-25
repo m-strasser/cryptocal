@@ -41,8 +41,8 @@ public:
     void RemoveAllRepeatedEvents();
 
     void serializeTo (QDataStream &out) const;
+    void serializeFrom(QDataStream &in);
 
-    friend QDataStream &operator>>(QDataStream &in, Event &e);
     /**
      * @brief operator == Compares the ID of two Events.
      * @param e2 Second Event.

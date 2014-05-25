@@ -12,7 +12,7 @@ void IStorageManager::SaveFiles(const Account &account, QFile &file)
             return;
 
     QDataStream out(&file);
-    out << account;
+    out << &account;
     file.close();
 }
 

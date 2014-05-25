@@ -7,13 +7,20 @@ class ISerializable : public QObject
 {
     Q_OBJECT
 public:
-    explicit ISerializable(QObject *parent = 0);
+    explicit ISerializable(QObject *parent = 0) : QObject(parent) {}
 
     virtual void serializeTo(QDataStream &out) const = 0;
-    friend QDataStream &operator<<(QDataStream &out, const ISerializable &s)
+    virtual void serializeFrom(QDataStream &in) = 0;
+
+    friend QDataStream &operator<<(QDataStream &out, ISerializable &s)
     {
         s.serializeTo(out);
         return out;
+    }
+    friend QDataStream &operator>>(QDataStream &in, ISerializable &s)
+    {
+        s.serializeFrom(in);
+        return in;
     }
 
 signals:

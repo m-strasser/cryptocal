@@ -4,7 +4,9 @@
 #include <QObject>
 #include <QUuid>
 #include <QList>
+#include <QVariant>
 #include <iserializable.h>
+
 
 class Account : public ISerializable
 
@@ -14,6 +16,8 @@ public:
     explicit Account(QObject *parent = 0);
 
     QUuid id() const;
+    void serializeTo(QDataStream &out) const;
+    void serializeFrom(QDataStream &in);
 
     Q_PROPERTY(QUuid id READ id)
     Q_PROPERTY(QString name MEMBER m_name)

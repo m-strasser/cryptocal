@@ -31,8 +31,7 @@ public:
     void RemoveAllEvents();
 
     void serializeTo (QDataStream &out) const;
-
-    friend QDataStream &operator>>(QDataStream &in, Calendar &c);
+    void serializeFrom (QDataStream &in);
 
     /**
      * @brief operator == Compares the ID of two Calendars.

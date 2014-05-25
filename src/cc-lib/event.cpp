@@ -52,37 +52,31 @@ void Event::RemoveAllRepeatedEvents()
 }
 
 /**
- * @brief operator << writes an Event to a QDataStream
+ * @brief serializeTo writes an Event to a QDataStream
  * @param out Stream to write to
- * @param e Event to write
- * @return The QDataStream
  */
 void Event::serializeTo (QDataStream &out) const
 {
     out << this->m_id;
-    out << this->name;
-    out << this->description;
+    out << this->m_name;
+    out << this->m_description;
     out << this->location;
-    out << this->start;
-    out << this->end;
+    out << this->m_start;
+    out << this->m_end;
     out << this->m_repeats;
 }
 
 /**
- * @brief operator >> reads an Event from a QDataStream
+ * @brief serializeFrom reads an Event from a QDataStream
  * @param in Stream to read from
- * @param e Event to read into
- * @return The QDataStream
  */
-QDataStream &operator>>(QDataStream &in, Event &e)
+void Event::serializeFrom(QDataStream &in)
 {
-    in >> e.m_id;
-    in >> e.name;
-    in >> e.description;
-    in >> e.location;
-    in >> e.start;
-    in >> e.end;
-    in >> e.m_repeats;
-
-    return in;
+    in >> this->m_id;
+    in >> this->m_name;
+    in >> this->m_description;
+    in >> this->location;
+    in >> this->m_start;
+    in >> this->m_end;
+    in >> this->m_repeats;
 }

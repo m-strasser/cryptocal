@@ -8,7 +8,7 @@ QT       += testlib
 
 #QT       -= gui
 
-TARGET = tst_testcalendar
+TARGET = tst_testaccount
 CONFIG   += console
 CONFIG   -= app_bundle
 

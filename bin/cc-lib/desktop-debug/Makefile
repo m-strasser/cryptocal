@@ -702,6 +702,21 @@ moc_istoragemanager.cpp: /usr/include/qt/QtCore/QObject \
 		/usr/include/qt/QtCore/QUuid \
 		/usr/include/qt/QtCore/quuid.h \
 		/usr/include/qt/QtCore/QList \
+		/usr/include/qt/QtCore/QVariant \
+		/usr/include/qt/QtCore/qvariant.h \
+		/usr/include/qt/QtCore/qmap.h \
+		/usr/include/qt/QtCore/qdebug.h \
+		/usr/include/qt/QtCore/qhash.h \
+		/usr/include/qt/QtCore/qtextstream.h \
+		/usr/include/qt/QtCore/qlocale.h \
+		/usr/include/qt/QtCore/qshareddata.h \
+		/usr/include/qt/QtCore/qvector.h \
+		/usr/include/qt/QtCore/qpoint.h \
+		/usr/include/qt/QtCore/qset.h \
+		/usr/include/qt/QtCore/qcontiguouscache.h \
+		/usr/include/qt/QtCore/qstringlist.h \
+		/usr/include/qt/QtCore/qregexp.h \
+		/usr/include/qt/QtCore/qstringmatcher.h \
 		../../../src/cc-lib/iserializable.h \
 		../../../src/cc-lib/istoragemanager.h
 	/usr/lib/qt/bin/moc $(DEFINES) $(INCPATH) -I/usr/lib/gcc/include/c++/4.8.2 -I/usr/lib/gcc/include/c++/4.8.2/x86_64-unknown-linux-gnu -I/usr/lib/gcc/include/c++/4.8.2/backward -I/usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.2/include -I/usr/local/include -I/usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.2/include-fixed -I/usr/include ../../../src/cc-lib/istoragemanager.h -o moc_istoragemanager.cpp
@@ -766,6 +781,24 @@ moc_account.cpp: /usr/include/qt/QtCore/QObject \
 		/usr/include/qt/QtCore/QUuid \
 		/usr/include/qt/QtCore/quuid.h \
 		/usr/include/qt/QtCore/QList \
+		/usr/include/qt/QtCore/QVariant \
+		/usr/include/qt/QtCore/qvariant.h \
+		/usr/include/qt/QtCore/qmap.h \
+		/usr/include/qt/QtCore/qpair.h \
+		/usr/include/qt/QtCore/qdebug.h \
+		/usr/include/qt/QtCore/qhash.h \
+		/usr/include/qt/QtCore/qtextstream.h \
+		/usr/include/qt/QtCore/qiodevice.h \
+		/usr/include/qt/QtCore/qlocale.h \
+		/usr/include/qt/QtCore/qshareddata.h \
+		/usr/include/qt/QtCore/qvector.h \
+		/usr/include/qt/QtCore/qpoint.h \
+		/usr/include/qt/QtCore/qset.h \
+		/usr/include/qt/QtCore/qcontiguouscache.h \
+		/usr/include/qt/QtCore/qstringlist.h \
+		/usr/include/qt/QtCore/qdatastream.h \
+		/usr/include/qt/QtCore/qregexp.h \
+		/usr/include/qt/QtCore/qstringmatcher.h \
 		../../../src/cc-lib/iserializable.h \
 		../../../src/cc-lib/account.h
 	/usr/lib/qt/bin/moc $(DEFINES) $(INCPATH) -I/usr/lib/gcc/include/c++/4.8.2 -I/usr/lib/gcc/include/c++/4.8.2/x86_64-unknown-linux-gnu -I/usr/lib/gcc/include/c++/4.8.2/backward -I/usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.2/include -I/usr/local/include -I/usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.2/include-fixed -I/usr/include ../../../src/cc-lib/account.h -o moc_account.cpp
@@ -899,6 +932,21 @@ moc_localstoragemanager.cpp: ../../../src/cc-lib/istoragemanager.h \
 		/usr/include/qt/QtCore/QUuid \
 		/usr/include/qt/QtCore/quuid.h \
 		/usr/include/qt/QtCore/QList \
+		/usr/include/qt/QtCore/QVariant \
+		/usr/include/qt/QtCore/qvariant.h \
+		/usr/include/qt/QtCore/qmap.h \
+		/usr/include/qt/QtCore/qdebug.h \
+		/usr/include/qt/QtCore/qhash.h \
+		/usr/include/qt/QtCore/qtextstream.h \
+		/usr/include/qt/QtCore/qlocale.h \
+		/usr/include/qt/QtCore/qshareddata.h \
+		/usr/include/qt/QtCore/qvector.h \
+		/usr/include/qt/QtCore/qpoint.h \
+		/usr/include/qt/QtCore/qset.h \
+		/usr/include/qt/QtCore/qcontiguouscache.h \
+		/usr/include/qt/QtCore/qstringlist.h \
+		/usr/include/qt/QtCore/qregexp.h \
+		/usr/include/qt/QtCore/qstringmatcher.h \
 		../../../src/cc-lib/iserializable.h \
 		../../../src/cc-lib/localstoragemanager.h
 	/usr/lib/qt/bin/moc $(DEFINES) $(INCPATH) -I/usr/lib/gcc/include/c++/4.8.2 -I/usr/lib/gcc/include/c++/4.8.2/x86_64-unknown-linux-gnu -I/usr/lib/gcc/include/c++/4.8.2/backward -I/usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.2/include -I/usr/local/include -I/usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.2/include-fixed -I/usr/include ../../../src/cc-lib/localstoragemanager.h -o moc_localstoragemanager.cpp
@@ -1157,6 +1205,24 @@ account.o: ../../../src/cc-lib/account.cpp ../../../src/cc-lib/account.h \
 		/usr/include/qt/QtCore/QUuid \
 		/usr/include/qt/QtCore/quuid.h \
 		/usr/include/qt/QtCore/QList \
+		/usr/include/qt/QtCore/QVariant \
+		/usr/include/qt/QtCore/qvariant.h \
+		/usr/include/qt/QtCore/qmap.h \
+		/usr/include/qt/QtCore/qpair.h \
+		/usr/include/qt/QtCore/qdebug.h \
+		/usr/include/qt/QtCore/qhash.h \
+		/usr/include/qt/QtCore/qtextstream.h \
+		/usr/include/qt/QtCore/qiodevice.h \
+		/usr/include/qt/QtCore/qlocale.h \
+		/usr/include/qt/QtCore/qshareddata.h \
+		/usr/include/qt/QtCore/qvector.h \
+		/usr/include/qt/QtCore/qpoint.h \
+		/usr/include/qt/QtCore/qset.h \
+		/usr/include/qt/QtCore/qcontiguouscache.h \
+		/usr/include/qt/QtCore/qstringlist.h \
+		/usr/include/qt/QtCore/qdatastream.h \
+		/usr/include/qt/QtCore/qregexp.h \
+		/usr/include/qt/QtCore/qstringmatcher.h \
 		../../../src/cc-lib/iserializable.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o account.o ../../../src/cc-lib/account.cpp
 
@@ -1230,6 +1296,21 @@ localstoragemanager.o: ../../../src/cc-lib/localstoragemanager.cpp ../../../src/
 		/usr/include/qt/QtCore/QUuid \
 		/usr/include/qt/QtCore/quuid.h \
 		/usr/include/qt/QtCore/QList \
+		/usr/include/qt/QtCore/QVariant \
+		/usr/include/qt/QtCore/qvariant.h \
+		/usr/include/qt/QtCore/qmap.h \
+		/usr/include/qt/QtCore/qdebug.h \
+		/usr/include/qt/QtCore/qhash.h \
+		/usr/include/qt/QtCore/qtextstream.h \
+		/usr/include/qt/QtCore/qlocale.h \
+		/usr/include/qt/QtCore/qshareddata.h \
+		/usr/include/qt/QtCore/qvector.h \
+		/usr/include/qt/QtCore/qpoint.h \
+		/usr/include/qt/QtCore/qset.h \
+		/usr/include/qt/QtCore/qcontiguouscache.h \
+		/usr/include/qt/QtCore/qstringlist.h \
+		/usr/include/qt/QtCore/qregexp.h \
+		/usr/include/qt/QtCore/qstringmatcher.h \
 		../../../src/cc-lib/iserializable.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o localstoragemanager.o ../../../src/cc-lib/localstoragemanager.cpp
 
