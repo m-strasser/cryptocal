@@ -6,20 +6,6 @@ Calendar::Calendar(QObject *parent) :
     m_id = m_id.createUuid();
 }
 
-QUuid Calendar::id() const
-{
-    return m_id;
-}
-
-/**
- * @brief Calendar::getEvents
- * Returns the Events of the Calendar.
- */
-QList<Event*> Calendar::events() const
-{
-    return m_events;
-}
-
 /**
  * @brief Calendar::AddEvent
  * Adds an Event to the Calendar.
@@ -59,6 +45,7 @@ void Calendar::serializeTo (QDataStream &out) const
     out << this->m_description;
     out << this->m_color;
     out << this->m_synchronised;
+
     out << this->m_events.count();
     foreach(Event* event, this->m_events)
     {
@@ -73,11 +60,13 @@ void Calendar::serializeTo (QDataStream &out) const
 void Calendar::serializeFrom(QDataStream &in)
 {
     int count;
+
     in >> this->m_id;
     in >> this->m_name;
     in >> this->m_description;
     in >> this->m_color;
     in >> this->m_synchronised;
+
     in >> count;
     for(int i=0;i<count;++i)
     {

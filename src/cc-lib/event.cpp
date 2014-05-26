@@ -4,26 +4,7 @@ Event::Event(QObject *parent) :
     ISerializable(parent)
 {
     m_id = m_id.createUuid();
-    repeatedIterations.append(this);
-}
-
-/**
- * @brief Event::GetId
- * Returns the distinct ID of the Event.
- */
-QUuid Event::id() const
-{
-    return m_id;
-}
-
-/**
- * @brief Event::GetRepeatedEvents
- * Returns a list containing Events, which are reoccuring instances
- * of one Event. (i.e. if an Event repeats weekly)
- */
-QList<Event*> Event::GetRepeatedEvents()
-{
-    return repeatedIterations;
+    m_repeatedEvents.append(this);
 }
 
 /**
@@ -33,7 +14,7 @@ QList<Event*> Event::GetRepeatedEvents()
  */
 void Event::AddRepeatedEvent(Event &e)
 {
-    repeatedIterations.append(&e);
+    m_repeatedEvents.append(&e);
 }
 
 /**
@@ -43,12 +24,16 @@ void Event::AddRepeatedEvent(Event &e)
  */
 void Event::RemoveRepeatedEvent(Event &e)
 {
-    repeatedIterations.removeAll(&e);
+    m_repeatedEvents.removeAll(&e);
 }
 
+/**
+ * @brief Event::RemoveAllRepeatedEvents()
+ * Removes all Events occurences.
+ */
 void Event::RemoveAllRepeatedEvents()
 {
-    repeatedIterations.clear();
+    m_repeatedEvents.clear();
 }
 
 /**
@@ -60,7 +45,7 @@ void Event::serializeTo (QDataStream &out) const
     out << this->m_id;
     out << this->m_name;
     out << this->m_description;
-    out << this->location;
+    out << this->m_location;
     out << this->m_start;
     out << this->m_end;
     out << this->m_repeats;
@@ -75,7 +60,7 @@ void Event::serializeFrom(QDataStream &in)
     in >> this->m_id;
     in >> this->m_name;
     in >> this->m_description;
-    in >> this->location;
+    in >> this->m_location;
     in >> this->m_start;
     in >> this->m_end;
     in >> this->m_repeats;

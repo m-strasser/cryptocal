@@ -6,11 +6,10 @@ Account::Account(QObject *parent) :
     m_id = m_id.createUuid();
 }
 
-QUuid Account::id() const
-{
-    return m_id;
-}
-
+/**
+ * @brief serializeTo writes an Account to a QDataStream
+ * @param out Stream to write to
+ */
 void Account::serializeTo(QDataStream &out) const
 {
     out << this->m_id;
@@ -22,6 +21,10 @@ void Account::serializeTo(QDataStream &out) const
     }
 }
 
+/**
+ * @brief serializeFrom reads an Account from a QDataStream
+ * @param out Stream to read from
+ */
 void Account::serializeFrom(QDataStream &in)
 {
     in >> this->m_id;
