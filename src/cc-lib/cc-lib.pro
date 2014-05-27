@@ -16,7 +16,8 @@ SOURCES += cclib.cpp \
     event.cpp \
     calendar.cpp \
     account.cpp \
-    localstoragemanager.cpp
+    localstoragemanager.cpp \
+    cryptomanager.cpp
 
 HEADERS += cclib.h \
     event.h \
@@ -24,8 +25,11 @@ HEADERS += cclib.h \
     istoragemanager.h \
     account.h \
     iserializable.h \
-    localstoragemanager.h
+    localstoragemanager.h \
+    cryptomanager.h
 unix {
     target.path = /usr/lib
     INSTALLS += target
 }
+
+unix|win32: LIBS += -lcryptopp
