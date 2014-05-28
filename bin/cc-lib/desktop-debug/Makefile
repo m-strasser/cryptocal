@@ -1012,6 +1012,28 @@ moc_cryptomanager.cpp: /usr/include/qt/QtCore/QObject \
 		/usr/include/qt/QtCore/qcontainerfwd.h \
 		/usr/include/qt/QtCore/qisenum.h \
 		/usr/include/qt/QtCore/qobject_impl.h \
+		/usr/include/qt/QtCore/QVariant \
+		/usr/include/qt/QtCore/qvariant.h \
+		/usr/include/qt/QtCore/qmap.h \
+		/usr/include/qt/QtCore/qpair.h \
+		/usr/include/qt/QtCore/qdebug.h \
+		/usr/include/qt/QtCore/qhash.h \
+		/usr/include/qt/QtCore/qtextstream.h \
+		/usr/include/qt/QtCore/qiodevice.h \
+		/usr/include/qt/QtCore/qlocale.h \
+		/usr/include/qt/QtCore/qshareddata.h \
+		/usr/include/qt/QtCore/qvector.h \
+		/usr/include/qt/QtCore/qpoint.h \
+		/usr/include/qt/QtCore/qset.h \
+		/usr/include/qt/QtCore/qcontiguouscache.h \
+		/usr/include/qt/QtCore/qstringlist.h \
+		/usr/include/qt/QtCore/qdatastream.h \
+		/usr/include/qt/QtCore/qregexp.h \
+		/usr/include/qt/QtCore/qstringmatcher.h \
+		/usr/include/qt/QtCore/QFile \
+		/usr/include/qt/QtCore/qfile.h \
+		/usr/include/qt/QtCore/qfiledevice.h \
+		/usr/include/qt/QtCore/QDebug \
 		../../../src/cc-lib/cryptomanager.h
 	/usr/lib/qt/bin/moc $(DEFINES) $(INCPATH) -I/usr/lib/gcc/include/c++/4.8.2 -I/usr/lib/gcc/include/c++/4.8.2/x86_64-unknown-linux-gnu -I/usr/lib/gcc/include/c++/4.8.2/backward -I/usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.2/include -I/usr/local/include -I/usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.2/include-fixed -I/usr/include ../../../src/cc-lib/cryptomanager.h -o moc_cryptomanager.cpp
 
@@ -1435,7 +1457,29 @@ cryptomanager.o: ../../../src/cc-lib/cryptomanager.cpp ../../../src/cc-lib/crypt
 		/usr/include/qt/QtCore/qvarlengtharray.h \
 		/usr/include/qt/QtCore/qcontainerfwd.h \
 		/usr/include/qt/QtCore/qisenum.h \
-		/usr/include/qt/QtCore/qobject_impl.h
+		/usr/include/qt/QtCore/qobject_impl.h \
+		/usr/include/qt/QtCore/QVariant \
+		/usr/include/qt/QtCore/qvariant.h \
+		/usr/include/qt/QtCore/qmap.h \
+		/usr/include/qt/QtCore/qpair.h \
+		/usr/include/qt/QtCore/qdebug.h \
+		/usr/include/qt/QtCore/qhash.h \
+		/usr/include/qt/QtCore/qtextstream.h \
+		/usr/include/qt/QtCore/qiodevice.h \
+		/usr/include/qt/QtCore/qlocale.h \
+		/usr/include/qt/QtCore/qshareddata.h \
+		/usr/include/qt/QtCore/qvector.h \
+		/usr/include/qt/QtCore/qpoint.h \
+		/usr/include/qt/QtCore/qset.h \
+		/usr/include/qt/QtCore/qcontiguouscache.h \
+		/usr/include/qt/QtCore/qstringlist.h \
+		/usr/include/qt/QtCore/qdatastream.h \
+		/usr/include/qt/QtCore/qregexp.h \
+		/usr/include/qt/QtCore/qstringmatcher.h \
+		/usr/include/qt/QtCore/QFile \
+		/usr/include/qt/QtCore/qfile.h \
+		/usr/include/qt/QtCore/qfiledevice.h \
+		/usr/include/qt/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o cryptomanager.o ../../../src/cc-lib/cryptomanager.cpp
 
 moc_event.o: moc_event.cpp 

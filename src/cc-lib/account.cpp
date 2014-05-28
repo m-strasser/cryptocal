@@ -14,7 +14,12 @@ void Account::serializeTo(QDataStream &out) const
 {
     out << this->m_id;
     out << this->m_name;
-    out << this->m_items;
+
+    out << this->m_items.count();
+    foreach(ISerializable* i, this->m_items)
+    {
+        out << *i;
+    }
 }
 
 /**
@@ -23,8 +28,16 @@ void Account::serializeTo(QDataStream &out) const
  */
 void Account::serializeFrom(QDataStream &in)
 {
+    int count;
     in >> this->m_id;
     in >> this->m_name;
-    //Problem is that you have to deserialize a derived class(derived from ISerializeable)
-    //in >> this->m_items;
+
+    in >> count;
+    //TODO: Make generic
+    for(int i=0;i<count;++i)
+    {
+        Calendar c;
+        in >> c;
+        this->m_items.append(&c);
+    }
 }
