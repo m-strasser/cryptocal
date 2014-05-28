@@ -14,11 +14,13 @@ public:
 
     friend QDataStream &operator<<(QDataStream &out, ISerializable &s)
     {
+        //TODO: Encrypt here
         s.serializeTo(out);
         return out;
     }
     friend QDataStream &operator>>(QDataStream &in, ISerializable &s)
     {
+        //TODO: Decrypt here
         s.serializeFrom(in);
         return in;
     }
