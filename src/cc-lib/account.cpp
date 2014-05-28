@@ -14,11 +14,7 @@ void Account::serializeTo(QDataStream &out) const
 {
     out << this->m_id;
     out << this->m_name;
-    out << this->m_items.count();
-    foreach(ISerializable* item, this->m_items)
-    {
-        out << *item;
-    }
+    out << this->m_items;
 }
 
 /**
@@ -29,4 +25,6 @@ void Account::serializeFrom(QDataStream &in)
 {
     in >> this->m_id;
     in >> this->m_name;
+    //Problem is that you have to deserialize a derived class(derived from ISerializeable)
+    //in >> this->m_items;
 }

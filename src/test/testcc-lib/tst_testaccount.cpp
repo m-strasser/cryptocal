@@ -47,7 +47,10 @@ void TestAccount::initTestCase()
     e.setName("Test Event");
     e.setDescription("This is also a test entry");
     c.AddEvent(e);
-    //a.setItems(a.items().append(&c));
+    QList<ISerializable*> tmp;
+    tmp = a.items();
+    tmp.append(&c);
+    a.setItems(tmp);
 
 }
 
@@ -75,7 +78,7 @@ void TestAccount::testAccountSerialization()
 void TestAccount::testCalendarSerialization()
 {
     //Serialize objects
-    if (!outfile.open(QIODevice::WriteOnly | QIODevice::Text))
+    if (!outfile.open(QIODevice::WriteOnly))
             return;
 
     QDataStream out(&outfile);
@@ -84,7 +87,7 @@ void TestAccount::testCalendarSerialization()
     outfile.close();
 
     //Deserialize objects
-    if (!outfile.open(QIODevice::ReadOnly | QIODevice::Text))
+    if (!outfile.open(QIODevice::ReadOnly))
             return;
     QDataStream in(&outfile);
     Calendar c2;
@@ -93,8 +96,8 @@ void TestAccount::testCalendarSerialization()
     outfile.close();
 
     //Test == Operator
-    QVERIFY2(c == c2, "Either Operator == fails or object ids are not the same");
     QCOMPARE(c2.property("id"), c.property("id"));
+    QVERIFY2(c == c2, "Either Operator == fails or object ids are not the same");
 
     //Test if calendars are the same
     QCOMPARE(c2.property("name").toString(), c.property("name").toString());
@@ -106,7 +109,7 @@ void TestAccount::testCalendarSerialization()
 void TestAccount::testEventSerialization()
 {
     //Serialize objects
-    if (!outfile.open(QIODevice::WriteOnly | QIODevice::Text))
+    if (!outfile.open(QIODevice::WriteOnly))
             return;
 
     QDataStream out(&outfile);
@@ -115,7 +118,7 @@ void TestAccount::testEventSerialization()
     outfile.close();
 
     //Deserialize objects
-    if (!outfile.open(QIODevice::ReadOnly | QIODevice::Text))
+    if (!outfile.open(QIODevice::ReadOnly))
             return;
     QDataStream in(&outfile);
     Event e2;
@@ -124,8 +127,8 @@ void TestAccount::testEventSerialization()
     outfile.close();
 
     //Test == Operator
-    QVERIFY2(e == e2, "Either Operator == fails or object ids are not the same");
     QCOMPARE(e2.property("id"), e.property("id"));
+    QVERIFY2(e == e2, "Either Operator == fails or object ids are not the same");
 
     //Test if events are the same
     QCOMPARE(e2.property("name").toString(), e.property("name").toString());
@@ -137,7 +140,7 @@ void TestAccount::testEventSerialization()
 void TestAccount::testWholeSerialization()
 {
     //Serialize objects
-    if (!outfile.open(QIODevice::WriteOnly | QIODevice::Text))
+    if (!outfile.open(QIODevice::WriteOnly))
             return;
 
     QDataStream out(&outfile);
@@ -146,26 +149,33 @@ void TestAccount::testWholeSerialization()
     outfile.close();
 
     //Deserialize objects
-    if (!outfile.open(QIODevice::ReadOnly | QIODevice::Text))
+    if (!outfile.open(QIODevice::ReadOnly))
             return;
     QDataStream in(&outfile);
-    Calendar a2;
+    Account a2;
     in >> a2;
     in.~QDataStream();
     outfile.close();
 
-    QVERIFY2(false, "Test not working!");
-    /*
-    //Test if events in calendars are the same
+
+    //Test if events in calendars in account are the same
+
+
+    ISerializable* pi = a.items().first();
+    ISerializable* pi2 = a2.items().first();
     qDebug() << "Original id" << e.id();
-    qDebug() << "First Element id" << c.events().first()->id();
-    qDebug() << "Second Element id" << c2.events().first()->id();
-    //TODO: Id serialization does not work
-    //QVERIFY2(*(c.events().first()) == *(c2.events().first()), "Either Operator == fails or object ids are not the same");
-    qDebug() << "Event in Calendar name: " << c.events().first()->name();
-    qDebug() << "Event in Calendar2 name: " << c2.events().first()->name();
+    Calendar* pc = qobject_cast<Calendar*>(pi);
+    Calendar* pc2 = qobject_cast<Calendar*>(pi2);
+    Event* pe = qobject_cast<Event*>(pc->events().first());
+    Event* pe2 = qobject_cast<Event*>(pc2->events().first());
+
+    qDebug() << "First Element id" << pe->id();
+    qDebug() << "Second Element id" << pe2->id();
+    QVERIFY2(*(pc->events().first()) == *(pc2->events().first()), "Either Operator == fails or object ids are not the same");
+    qDebug() << "Event in Calendar name: " << pc->events().first()->name();
+    qDebug() << "Event in Calendar2 name: " << pc2->events().first()->name();
     //QVERIFY2(c.events().first()->name() == c2.events().first()->name(), "Names are not the same");
-    */
+
 
 }
 

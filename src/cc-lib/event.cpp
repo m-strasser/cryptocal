@@ -17,7 +17,7 @@ void Event::AddRepeatedEvent(Event &e)
     m_repeatedEvents.append(&e);
 }
 
-/**
+/**e
  * @brief Event::RemoveRepeatedEvent
  * Removes an Event occurence.
  * @param e The occurence to be removed.
