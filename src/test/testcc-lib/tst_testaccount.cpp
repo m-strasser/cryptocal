@@ -3,6 +3,7 @@
 #include "account.h"
 #include "calendar.h"
 #include "event.h"
+#include "localstoragemanager.h"
 
 
 class TestAccount : public QObject
@@ -15,6 +16,7 @@ public:
     Account a;
     Calendar c;
     Event e;
+    LocalStorageManager lsm;
 
 private Q_SLOTS:
     void cleanup();
@@ -25,6 +27,7 @@ private Q_SLOTS:
     void testCalendarSerialization();
     void testEventSerialization();
     void testWholeSerialization();
+    void testLocalStorageManager();
 };
 
 TestAccount::TestAccount()
@@ -188,6 +191,18 @@ void TestAccount::testWholeSerialization()
     QCOMPARE(c.events().first()->name(), pc2->events().first()->name());
 
 
+}
+
+void TestAccount::testLocalStorageManager()
+{
+    lsm.SaveFiles(a, outfile);
+    Account* a2;
+    a2 = lsm.LoadFiles(outfile);
+
+    //Test if deserialized Objects are the same
+    QVERIFY2(a == *a2, "Either Operator == fails or object ids are not the same");
+    Calendar* c2 = qobject_cast<Calendar*>(a2->items().first());
+    QVERIFY2(c == *c2, "Either Operator == fails or object ids are not the same");
 }
 
 QTEST_APPLESS_MAIN(TestAccount)

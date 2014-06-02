@@ -10,15 +10,16 @@ class LocalStorageManager : public IStorageManager
 public:
     explicit LocalStorageManager(QObject *parent = 0);
 
-    Q_PROPERTY(QFile* file MEMBER m_file)
-    Q_PROPERTY(Account* account MEMBER m_account)
+    void SaveFiles(Account &account, QFile &file);
+    void UploadFiles() const;
+
+    Account* LoadFiles(QFile &file);
+    void DownloadFiles();
 signals:
 
 public slots:
 
 private:
-    QFile* m_file;
-    Account* m_account;
-    Account* returnacc;
+
 };
 #endif // LOCALSTORAGEMANAGER_H

@@ -3,36 +3,35 @@
 LocalStorageManager::LocalStorageManager(QObject *parent) :
     IStorageManager(parent)
 {
-    m_file->setFileName("storage");
 }
 
-void IStorageManager::SaveFiles(const Account &account, QFile &file)
+void LocalStorageManager::SaveFiles(Account &account, QFile &file)
 {
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+    if (!file.open(QIODevice::WriteOnly))
             return;
 
     QDataStream out(&file);
-    out << &account;
+    out << account;
     file.close();
 }
 
-void IStorageManager::UploadFiles() const
+void LocalStorageManager::UploadFiles() const
 {
 }
 
-Account* IStorageManager::LoadFiles(QFile &file)
+Account* LocalStorageManager::LoadFiles(QFile &file)
 {
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+    if (!file.open(QIODevice::ReadOnly))
             return NULL;
 
-    //QDataStream in(&file);
-    //Account* a = this->property("returnacc");
-    //in >> a;
-    //return a;
+    QDataStream in(&file);
+    Account* a = new Account();
+    in >> *a;
     file.close();
-    return NULL;
+
+    return a;
 }
 
-void IStorageManager::DownloadFiles()
+void LocalStorageManager::DownloadFiles()
 {
 }

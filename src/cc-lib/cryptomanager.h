@@ -13,6 +13,7 @@ using CryptoPP::AES;
 using CryptoPP::CTR_Mode;
 using CryptoPP::AutoSeededRandomPool;
 
+//FIXME: Should be just a namespace, or a static class
 class CryptoManager : public QObject
 {
     Q_OBJECT
