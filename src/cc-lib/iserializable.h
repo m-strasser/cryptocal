@@ -9,9 +9,6 @@ class ISerializable : public QObject
 public:
     explicit ISerializable(QObject *parent = 0) : QObject(parent) {}
 
-    virtual void serializeTo(QDataStream &out) const = 0;
-    virtual void serializeFrom(QDataStream &in) = 0;
-
     friend QDataStream &operator<<(QDataStream &out, ISerializable &s)
     {
         //FIXME: Encrypt here
@@ -29,6 +26,9 @@ signals:
 
 public slots:
 
+private:
+    virtual void serializeTo(QDataStream &out) const = 0;
+    virtual void serializeFrom(QDataStream &in) = 0;
 };
 
 #endif // ISERIALIZABLE_H

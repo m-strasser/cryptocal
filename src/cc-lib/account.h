@@ -39,9 +39,6 @@ public:
     void RemoveISerializable(ISerializable &i);
     void RemoveAllISerializables();
 
-    void serializeTo(QDataStream &out) const;
-    void serializeFrom(QDataStream &in);
-
     /**
      * @brief operator == Compares the ID of two Accounts.
      * @param account Second Account.
@@ -70,6 +67,9 @@ private:
     QUuid m_id;
     QString m_name;
     QList<ISerializable*> m_items;
+
+    void serializeTo(QDataStream &out) const;
+    void serializeFrom(QDataStream &in);
 };
 
 #endif // ACCOUNT_H

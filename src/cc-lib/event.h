@@ -69,9 +69,6 @@ public:
     void RemoveRepeatedEvent(Event &e);
     void RemoveAllRepeatedEvents();
 
-    void serializeTo (QDataStream &out) const;
-    void serializeFrom(QDataStream &in);
-
     /**
      * @brief operator == Compares the ID of two Events.
      * @param event Second Event.
@@ -125,6 +122,9 @@ private:
         bool m_synchronised;
         QList<Event*> m_repeatedEvents;
         QString m_location;
+
+        void serializeTo(QDataStream &out) const;
+        void serializeFrom(QDataStream &in);
 };
 
 #endif // EVENT_H

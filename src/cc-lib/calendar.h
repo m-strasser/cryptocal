@@ -57,9 +57,6 @@ public:
     void RemoveEvent(Event &e);
     void RemoveAllEvents();
 
-    void serializeTo (QDataStream &out) const;
-    void serializeFrom (QDataStream &in);
-
     /**
      * @brief operator == Compares the ID of two Calendars.
      * @param calendar Second Calendar.
@@ -98,6 +95,9 @@ private:
     QColor m_color;
     bool m_synchronised;
     QList<Event*> m_events;
+
+    void serializeTo(QDataStream &out) const;
+    void serializeFrom(QDataStream &in);
 };
 
 
