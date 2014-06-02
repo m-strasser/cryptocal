@@ -47,10 +47,7 @@ void TestAccount::initTestCase()
     e.setName("Test Event");
     e.setDescription("This is also a test entry");
     c.AddEvent(e);
-    QList<ISerializable*> tmp;
-    tmp = a.items();
-    tmp.append(&c);
-    a.setItems(tmp);
+    a.AddISerializable(c);
 
 }
 
@@ -159,8 +156,6 @@ void TestAccount::testWholeSerialization()
 
 
     //Test if events in calendars in account are the same
-
-
     ISerializable* pi = a.items().first();
     ISerializable* pi2 = a2.items().first();
     qDebug() << "Original id" << e.id();
@@ -174,7 +169,7 @@ void TestAccount::testWholeSerialization()
     QVERIFY2(*(pc->events().first()) == *(pc2->events().first()), "Either Operator == fails or object ids are not the same");
     qDebug() << "Event in Calendar name: " << pc->events().first()->name();
     qDebug() << "Event in Calendar2 name: " << pc2->events().first()->name();
-    //QVERIFY2(c.events().first()->name() == c2.events().first()->name(), "Names are not the same");
+    QVERIFY2(c.events().first()->name() == pc2->events().first()->name(), "Names are not the same");
 
 
 }

@@ -35,6 +35,10 @@ public:
         return m_items;
     }
 
+    void AddISerializable(ISerializable &i);
+    void RemoveISerializable(ISerializable &i);
+    void RemoveAllISerializables();
+
     void serializeTo(QDataStream &out) const;
     void serializeFrom(QDataStream &in);
 

@@ -6,6 +6,21 @@ Account::Account(QObject *parent) :
     m_id = m_id.createUuid();
 }
 
+void Account::AddISerializable(ISerializable &i)
+{
+    m_items.append(&i);
+}
+
+void Account::RemoveISerializable(ISerializable &i)
+{
+    m_items.removeAll(&i);
+}
+
+void Account::RemoveAllISerializables()
+{
+    m_items.clear();
+}
+
 /**
  * @brief serializeTo writes an Account to a QDataStream
  * @param out Stream to write to
@@ -36,8 +51,11 @@ void Account::serializeFrom(QDataStream &in)
     //TODO: Make generic
     for(int i=0;i<count;++i)
     {
-        Calendar c;
-        in >> c;
-        this->m_items.append(&c);
+        //Creating dynamicallz allocated object with new, because otherwise if serializeFrom is at it's end, the destructor of Calendar get's called
+        //TODO: should you call delete in the destructor of Account?
+        //Difference heap and stack allocation
+        Calendar* c = new Calendar();
+        in >> *c;
+        this->AddISerializable(*c);
     }
 }

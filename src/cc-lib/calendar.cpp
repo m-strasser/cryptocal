@@ -10,7 +10,7 @@ Calendar::Calendar(QObject *parent) :
  * @brief Calendar::AddEvent
  * Adds an Event to the Calendar.
  */
-void Calendar::AddEvent(Event& e)
+void Calendar::AddEvent(Event &e)
 {
     m_events.append(&e);
 }
@@ -20,7 +20,7 @@ void Calendar::AddEvent(Event& e)
  * Removes an Event from the Calendar.
  * @param e The occurence to be removed.
  */
-void Calendar::RemoveEvent(Event& e)
+void Calendar::RemoveEvent(Event &e)
 {
     m_events.removeAll(&e);
 }
@@ -70,9 +70,9 @@ void Calendar::serializeFrom(QDataStream &in)
     in >> count;
     for(int i=0;i<count;++i)
     {
-        Event e;
-        in >> e;
-        this->m_events.append(&e);
+        Event* e = new Event();
+        in >> *e;
+        this->m_events.append(e);
     }
 }
 
