@@ -437,6 +437,8 @@ tst_testaccount.moc: ../../../src/cc-lib/account.h \
 		../../../src/cc-lib/iserializable.h \
 		../../../src/cc-lib/calendar.h \
 		../../../src/cc-lib/event.h \
+		../../../src/cc-lib/localstoragemanager.h \
+		../../../src/cc-lib/istoragemanager.h \
 		../../../src/test/testcc-lib/tst_testaccount.cpp
 	/usr/lib/qt/bin/moc $(DEFINES) -I/usr/lib/qt/mkspecs/linux-g++ -I/home/malet/Development/cryptocal/src/test/testcc-lib -I/home/malet/Development/cryptocal/src/cc-lib -I/usr/include/qt -I/usr/include/qt/QtTest -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I. -I/usr/include/c++/4.9.0 -I/usr/include/c++/4.9.0/x86_64-unknown-linux-gnu -I/usr/include/c++/4.9.0/backward -I/usr/lib/gcc/x86_64-unknown-linux-gnu/4.9.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-unknown-linux-gnu/4.9.0/include-fixed -I/usr/include ../../../src/test/testcc-lib/tst_testaccount.cpp -o tst_testaccount.moc
 
@@ -454,6 +456,8 @@ tst_testaccount.o: ../../../src/test/testcc-lib/tst_testaccount.cpp ../../../src
 		../../../src/cc-lib/iserializable.h \
 		../../../src/cc-lib/calendar.h \
 		../../../src/cc-lib/event.h \
+		../../../src/cc-lib/localstoragemanager.h \
+		../../../src/cc-lib/istoragemanager.h \
 		tst_testaccount.moc
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tst_testaccount.o ../../../src/test/testcc-lib/tst_testaccount.cpp
 

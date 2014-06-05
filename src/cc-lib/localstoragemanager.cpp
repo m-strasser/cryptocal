@@ -5,6 +5,12 @@ LocalStorageManager::LocalStorageManager(QObject *parent) :
 {
 }
 
+/**
+ * @brief LocalStorageManager::SaveFiles
+ * Writes an Account and all it's content to the given file.
+ * @param account Account to save
+ * @param in File to save
+ */
 void LocalStorageManager::SaveFiles(Account &account, QFile &file)
 {
     if (!file.open(QIODevice::WriteOnly))
@@ -15,10 +21,19 @@ void LocalStorageManager::SaveFiles(Account &account, QFile &file)
     file.close();
 }
 
+/**
+ * @brief not implemented by LocalStorageManager
+ */
 void LocalStorageManager::UploadFiles() const
 {
 }
 
+/**
+ * @brief LocalStorageManager::LoadFiles
+ * Loads an Account and all it's content from the given file.
+ * @param in File to save
+ * @return The Account instance with all it's content
+ */
 Account* LocalStorageManager::LoadFiles(QFile &file)
 {
     if (!file.open(QIODevice::ReadOnly))
@@ -32,6 +47,9 @@ Account* LocalStorageManager::LoadFiles(QFile &file)
     return a;
 }
 
+/**
+ * @brief not implemented by LocalStorageManager
+ */
 void LocalStorageManager::DownloadFiles()
 {
 }

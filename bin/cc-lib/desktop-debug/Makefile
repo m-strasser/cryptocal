@@ -42,8 +42,7 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../../../src/cc-lib/cclib.cpp \
-		../../../src/cc-lib/event.cpp \
+SOURCES       = ../../../src/cc-lib/event.cpp \
 		../../../src/cc-lib/calendar.cpp \
 		../../../src/cc-lib/account.cpp \
 		../../../src/cc-lib/localstoragemanager.cpp \
@@ -54,8 +53,7 @@ SOURCES       = ../../../src/cc-lib/cclib.cpp \
 		moc_iserializable.cpp \
 		moc_localstoragemanager.cpp \
 		moc_cryptomanager.cpp
-OBJECTS       = cclib.o \
-		event.o \
+OBJECTS       = event.o \
 		calendar.o \
 		account.o \
 		localstoragemanager.o \
@@ -171,8 +169,7 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/features/exceptions.prf \
 		/usr/lib/qt/mkspecs/features/yacc.prf \
 		/usr/lib/qt/mkspecs/features/lex.prf \
-		../../../../src/cc-lib/cc-lib.pro ../../../src/cc-lib/cclib.cpp \
-		../../../src/cc-lib/event.cpp \
+		../../../../src/cc-lib/cc-lib.pro ../../../src/cc-lib/event.cpp \
 		../../../src/cc-lib/calendar.cpp \
 		../../../src/cc-lib/account.cpp \
 		../../../src/cc-lib/localstoragemanager.cpp \
@@ -443,7 +440,7 @@ qmake_all: FORCE
 
 dist: 
 	@test -d .tmp/cc-lib1.0.0 || mkdir -p .tmp/cc-lib1.0.0
-	$(COPY_FILE) --parents $(DIST) .tmp/cc-lib1.0.0/ && $(COPY_FILE) --parents ../../../src/cc-lib/cclib.h ../../../src/cc-lib/event.h ../../../src/cc-lib/calendar.h ../../../src/cc-lib/istoragemanager.h ../../../src/cc-lib/account.h ../../../src/cc-lib/iserializable.h ../../../src/cc-lib/localstoragemanager.h ../../../src/cc-lib/cryptomanager.h .tmp/cc-lib1.0.0/ && $(COPY_FILE) --parents ../../../src/cc-lib/cclib.cpp ../../../src/cc-lib/event.cpp ../../../src/cc-lib/calendar.cpp ../../../src/cc-lib/account.cpp ../../../src/cc-lib/localstoragemanager.cpp ../../../src/cc-lib/cryptomanager.cpp .tmp/cc-lib1.0.0/ && (cd `dirname .tmp/cc-lib1.0.0` && $(TAR) cc-lib1.0.0.tar cc-lib1.0.0 && $(COMPRESS) cc-lib1.0.0.tar) && $(MOVE) `dirname .tmp/cc-lib1.0.0`/cc-lib1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/cc-lib1.0.0
+	$(COPY_FILE) --parents $(DIST) .tmp/cc-lib1.0.0/ && $(COPY_FILE) --parents ../../../src/cc-lib/event.h ../../../src/cc-lib/calendar.h ../../../src/cc-lib/istoragemanager.h ../../../src/cc-lib/account.h ../../../src/cc-lib/iserializable.h ../../../src/cc-lib/localstoragemanager.h ../../../src/cc-lib/cryptomanager.h .tmp/cc-lib1.0.0/ && $(COPY_FILE) --parents ../../../src/cc-lib/event.cpp ../../../src/cc-lib/calendar.cpp ../../../src/cc-lib/account.cpp ../../../src/cc-lib/localstoragemanager.cpp ../../../src/cc-lib/cryptomanager.cpp .tmp/cc-lib1.0.0/ && (cd `dirname .tmp/cc-lib1.0.0` && $(TAR) cc-lib1.0.0.tar cc-lib1.0.0 && $(COMPRESS) cc-lib1.0.0.tar) && $(MOVE) `dirname .tmp/cc-lib1.0.0`/cc-lib1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/cc-lib1.0.0
 
 
 clean:compiler_clean 
@@ -518,9 +515,6 @@ compiler_lex_clean:
 compiler_clean: compiler_moc_header_clean 
 
 ####### Compile
-
-cclib.o: ../../../src/cc-lib/cclib.cpp ../../../src/cc-lib/cclib.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o cclib.o ../../../src/cc-lib/cclib.cpp
 
 event.o: ../../../src/cc-lib/event.cpp ../../../src/cc-lib/event.h \
 		../../../src/cc-lib/iserializable.h

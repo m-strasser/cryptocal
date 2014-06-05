@@ -9,6 +9,7 @@ Calendar::Calendar(QObject *parent) :
 /**
  * @brief Calendar::AddEvent
  * Adds an Event to the Calendar.
+ * @param e The event to be added
  */
 void Calendar::AddEvent(Event &e)
 {
@@ -18,7 +19,7 @@ void Calendar::AddEvent(Event &e)
 /**
  * @brief Calendar::RemoveEvent
  * Removes an Event from the Calendar.
- * @param e The occurence to be removed.
+ * @param e The Event to be removed.
  */
 void Calendar::RemoveEvent(Event &e)
 {
@@ -26,8 +27,8 @@ void Calendar::RemoveEvent(Event &e)
 }
 
 /**
- * @brief Calendar::AddEvent
- * Adds an Event to the Calendar.
+ * @brief Calendar::RemoveAllEvents()
+ * Removes all the Events.
  */
 void Calendar::RemoveAllEvents()
 {
@@ -35,8 +36,9 @@ void Calendar::RemoveAllEvents()
 }
 
 /**
- * @brief serializeTo writes a Calendar to a QDataStream
- * @param out Stream to write to
+ * @brief Calendar::serializeTo
+ * Writes a Calendar to a QDataStream
+ * @param in Stream to write to
  */
 void Calendar::serializeTo (QDataStream &out) const
 {
@@ -54,8 +56,9 @@ void Calendar::serializeTo (QDataStream &out) const
 }
 
 /**
- * @brief serializeFrom reads a Calendar from a QDataStream
- * @param out Stream to read from
+ * @brief Calendar::serializeFrom
+ * Reads a Calendar from a QDataStream
+ * @param in Stream to read from
  */
 void Calendar::serializeFrom(QDataStream &in)
 {

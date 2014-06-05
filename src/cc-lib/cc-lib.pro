@@ -12,14 +12,14 @@ TARGET = cc-lib
 TEMPLATE = lib
 CONFIG += staticlib
 
-SOURCES += cclib.cpp \
+SOURCES += \
     event.cpp \
     calendar.cpp \
     account.cpp \
     localstoragemanager.cpp \
     cryptomanager.cpp
 
-HEADERS += cclib.h \
+HEADERS += \
     event.h \
     calendar.h \
     istoragemanager.h \

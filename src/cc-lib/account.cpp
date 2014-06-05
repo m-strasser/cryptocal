@@ -6,23 +6,38 @@ Account::Account(QObject *parent) :
     m_id = m_id.createUuid();
 }
 
+/**
+ * @brief Account::AddISerializable
+ * Adds an instance of any subclass of ISerializable to the account
+ * @param i Instance of ISerializable to be added
+ */
 void Account::AddISerializable(ISerializable &i)
 {
     m_items.append(&i);
 }
 
+/**
+ * @brief Account::RemoveISerializable
+ * Removes an instance of any subclass of ISerializable from the account
+ * @param i Instance of ISerializable to be removed
+ */
 void Account::RemoveISerializable(ISerializable &i)
 {
     m_items.removeAll(&i);
 }
 
+/**
+ * @brief Account::RemoveISerializable
+ * Removes all instance of any subclass of ISerializable from the account
+ */
 void Account::RemoveAllISerializables()
 {
     m_items.clear();
 }
 
 /**
- * @brief serializeTo writes an Account to a QDataStream
+ * @brief Account::serializeTo
+ * serializeTo writes an Account to a QDataStream
  * @param out Stream to write to
  */
 void Account::serializeTo(QDataStream &out) const
@@ -38,8 +53,9 @@ void Account::serializeTo(QDataStream &out) const
 }
 
 /**
- * @brief serializeFrom reads an Account from a QDataStream
- * @param out Stream to read from
+ * @brief Account::serializeFrom
+ * Reads an Account from a QDataStream
+ * @param in Stream to read from
  */
 void Account::serializeFrom(QDataStream &in)
 {
@@ -51,7 +67,8 @@ void Account::serializeFrom(QDataStream &in)
     //TODO: Make generic
     for(int i=0;i<count;++i)
     {
-        //Creating dynamicallz allocated object with new, because otherwise if serializeFrom is at it's end, the destructor of Calendar get's called
+        //Creating dynamically allocated object with new, because otherwise if serializeFrom is at it's end,
+        //the destructor of Calendar get's called
         //TODO: should you call delete in the destructor of Account?
         //Difference heap and stack allocation
         Calendar* c = new Calendar();

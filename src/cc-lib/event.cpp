@@ -17,7 +17,7 @@ void Event::AddRepeatedEvent(Event &e)
     m_repeatedEvents.append(&e);
 }
 
-/**e
+/**
  * @brief Event::RemoveRepeatedEvent
  * Removes an Event occurence.
  * @param e The occurence to be removed.
@@ -28,7 +28,7 @@ void Event::RemoveRepeatedEvent(Event &e)
 }
 
 /**
- * @brief Event::RemoveAllRepeatedEvents()
+ * @brief Event::RemoveAllRepeatedEvents
  * Removes all Events occurences.
  */
 void Event::RemoveAllRepeatedEvents()
@@ -37,7 +37,8 @@ void Event::RemoveAllRepeatedEvents()
 }
 
 /**
- * @brief serializeTo writes an Event to a QDataStream
+ * @brief Event::serializeTo()
+ * Writes an Event to a QDataStream
  * @param out Stream to write to
  */
 void Event::serializeTo (QDataStream &out) const
@@ -52,7 +53,8 @@ void Event::serializeTo (QDataStream &out) const
 }
 
 /**
- * @brief serializeFrom reads an Event from a QDataStream
+ * @brief Event::serializeFrom
+ * Reads an Event from a QDataStream
  * @param in Stream to read from
  */
 void Event::serializeFrom(QDataStream &in)
