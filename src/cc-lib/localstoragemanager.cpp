@@ -11,7 +11,7 @@ LocalStorageManager::LocalStorageManager(QObject *parent) :
  * @param account Account to save
  * @param in File to save
  */
-void LocalStorageManager::SaveFiles(Account &account, QFile &file)
+void LocalStorageManager::SaveFiles(const Account &account, QFile &file)
 {
     if (!file.open(QIODevice::WriteOnly))
             return;

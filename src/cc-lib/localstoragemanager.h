@@ -10,7 +10,7 @@ class LocalStorageManager : public IStorageManager
 public:
     explicit LocalStorageManager(QObject *parent = 0);
 
-    void SaveFiles(Account &account, QFile &file);
+    void SaveFiles(const Account &account, QFile &file);
     void UploadFiles() const;
 
     Account* LoadFiles(QFile &file);

@@ -9,7 +9,7 @@ class ISerializable : public QObject
 public:
     explicit ISerializable(QObject *parent = 0) : QObject(parent) {}
 
-    friend QDataStream &operator<<(QDataStream &out, ISerializable &s)
+    friend QDataStream &operator<<(QDataStream &out, const ISerializable &s)
     {
         //FIXME: Encrypt here
         s.serializeTo(out);
