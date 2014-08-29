@@ -6,40 +6,21 @@ Account::Account(QObject *parent) :
     m_id = m_id.createUuid();
 }
 
-/**
- * @brief Account::AddISerializable
- * Adds an instance of any subclass of ISerializable to the account
- * @param i Instance of ISerializable to be added
- */
 void Account::AddISerializable(ISerializable &i)
 {
     m_items.append(&i);
 }
 
-/**
- * @brief Account::RemoveISerializable
- * Removes an instance of any subclass of ISerializable from the account
- * @param i Instance of ISerializable to be removed
- */
 void Account::RemoveISerializable(ISerializable &i)
 {
     m_items.removeAll(&i);
 }
 
-/**
- * @brief Account::RemoveISerializable
- * Removes all instance of any subclass of ISerializable from the account
- */
 void Account::RemoveAllISerializables()
 {
     m_items.clear();
 }
 
-/**
- * @brief Account::serializeTo
- * serializeTo writes an Account to a QDataStream
- * @param out Stream to write to
- */
 void Account::serializeTo(QDataStream &out) const
 {
     out << this->m_id;
@@ -52,11 +33,6 @@ void Account::serializeTo(QDataStream &out) const
     }
 }
 
-/**
- * @brief Account::serializeFrom
- * Reads an Account from a QDataStream
- * @param in Stream to read from
- */
 void Account::serializeFrom(QDataStream &in)
 {
     int count;
