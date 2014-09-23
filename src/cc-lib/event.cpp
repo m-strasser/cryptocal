@@ -7,40 +7,21 @@ Event::Event(QObject *parent) :
     m_repeatedEvents.append(this);
 }
 
-/**
- * @brief Event::AddRepeatedEvent
- * Adds an Event as a reoccuring instance of this one.
- * @param e The Event to be added.
- */
 void Event::AddRepeatedEvent(Event &e)
 {
     m_repeatedEvents.append(&e);
 }
 
-/**
- * @brief Event::RemoveRepeatedEvent
- * Removes an Event occurence.
- * @param e The occurence to be removed.
- */
 void Event::RemoveRepeatedEvent(Event &e)
 {
     m_repeatedEvents.removeAll(&e);
 }
 
-/**
- * @brief Event::RemoveAllRepeatedEvents
- * Removes all Events occurences.
- */
 void Event::RemoveAllRepeatedEvents()
 {
     m_repeatedEvents.clear();
 }
 
-/**
- * @brief Event::serializeTo()
- * Writes an Event to a QDataStream
- * @param out Stream to write to
- */
 void Event::serializeTo (QDataStream &out) const
 {
     out << this->m_id;
@@ -52,11 +33,6 @@ void Event::serializeTo (QDataStream &out) const
     out << this->m_repeats;
 }
 
-/**
- * @brief Event::serializeFrom
- * Reads an Event from a QDataStream
- * @param in Stream to read from
- */
 void Event::serializeFrom(QDataStream &in)
 {
     in >> this->m_id;

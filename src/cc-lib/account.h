@@ -5,17 +5,17 @@
 #include <QUuid>
 #include <QList>
 #include <QVariant>
+
 #include <iserializable.h>
 #include <calendar.h>
 
 
 class Account : public ISerializable
-
 {
     Q_OBJECT
     Q_PROPERTY(QUuid id READ id)
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
-    Q_PROPERTY(QList<ISerializable*> items READ items WRITE setItems)
+    Q_PROPERTY(QList<ISerializable*> items READ items WRITE setItems NOTIFY itemsChanged)
 
 public:
 
@@ -56,7 +56,8 @@ public:
     /**
      * @brief operator == compares two Accounts.
      * @details The comparison is done by comparing the id property of both Accounts.
-     * If you have to instances with the same id but different content, the operator will still return true.
+     * If you have to instances with the same id but different content,
+     * the operator will still return true.
      * @param account Account to compare the first Account with.
      * @return True, if the two IDs are the same, else false.
      */
@@ -66,19 +67,27 @@ public:
     }
 
 signals:
-
     void nameChanged(QString arg);
 
-public slots:
+    void itemsChanged(QList<ISerializable*> arg);
 
+public slots:
     void setName(QString arg)
     {
+        if (m_name == arg)
+            return;
+
         m_name = arg;
+        emit nameChanged(arg);
     }
 
     void setItems(QList<ISerializable*> arg)
     {
+        if (m_items == arg)
+            return;
+
         m_items = arg;
+        emit itemsChanged(arg);
     }
 
 private:

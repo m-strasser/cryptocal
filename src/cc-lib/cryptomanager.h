@@ -20,8 +20,20 @@ class CryptoManager : public QObject
 public:
     explicit CryptoManager(QObject *parent = 0);
 
+    /**
+     * @brief Encrypt the given DataStream
+     * @param in DataStream to encrypt
+     * @return Returns the encrypted DataStream
+     */
     QDataStream& encrypt(QDataStream &in);
+
+    /**
+     * @brief Decrypt the given DataStream
+     * @param in DataStream to decrypt
+     * @return Returns the decrypted DataStream
+     */
     QDataStream& decrypt(QDataStream &in);
+
     void loadKey(QFile &file);
     void saveKey(QFile &file);
     void generateKey(QString passphrase);

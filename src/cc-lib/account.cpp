@@ -41,9 +41,10 @@ void Account::serializeFrom(QDataStream &in)
 
     in >> count;
     //TODO: Make generic
-    for(int i=0;i<count;++i)
+    for (int i=0;i<count;++i)
     {
-        //Creating dynamically allocated object with new, because otherwise if serializeFrom is at it's end,
+        //Creating dynamically allocated object with new,
+        //because otherwise if serializeFrom is at it's end,
         //the destructor of Calendar get's called
         //TODO: should you call delete in the destructor of Account?
         //Difference heap and stack allocation
